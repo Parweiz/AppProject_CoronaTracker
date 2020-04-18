@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AppProject - CoronaTracker</string>
+    <string name="service" translatable="false">A started service that runs in the background</string>
+    <string name="exit">Exit</string>
+    <string name="add">Add</string>
+    <string name="getall">Get All</string>
+    <string name="back">Back</string>
+    <string name="notificationtitle">CoronaTracker title </string>
+    <string name="notificationtext">CoronaTracker text </string>
 </resources>
