@@ -7,4 +7,8 @@
     <string name="back">Back</string>
     <string name="notificationtitle">CoronaTracker title </string>
     <string name="notificationtext">CoronaTracker text </string>
+    <string name="pickoption">Please choose an option</string>
+    <string name="maps">Maps</string>
+    <string name="tracker">Tracker</string>
+    <string name="logout">Log Out</string>
 </resources>
