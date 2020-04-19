@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if(mUser != null){
+            Log.d(TAG, "User is already signed in - going directly to MenuActivity");
             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
         }
 
@@ -83,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email = etEmail.getText().toString();
         String pword = etPassword.getText().toString();
 
+        // validate input
         if(!hasUserFilledOutFormCorrectly(email, pword)) return;
 
         mAuth.signInWithEmailAndPassword(email, pword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -106,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private boolean hasUserFilledOutFormCorrectly(String email, String pword) {
-        String temp_email = email;
+        String temp_email = email; // TODO: remove redundancies..
         String temp_pword = pword;
         String error_userHasNotFilledOutField = getResources().getString(R.string.error_form_field_must_be_filled);
         String error_invalid_email = getResources().getString(R.string.error_invalid_email);

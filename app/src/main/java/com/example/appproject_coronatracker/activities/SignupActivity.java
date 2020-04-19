@@ -1,5 +1,6 @@
 package com.example.appproject_coronatracker.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appproject_coronatracker.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
@@ -27,6 +32,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public static final String EMAIL_STRING = "emailstring";
     public static final String PASSWORD_STRING = "passwordstring";
     public static final String REPASSWORD_STRING = "repasswordstring";
+
+    // Firebase
+    private FirebaseAuth mAuth;
 
     // Widgets
     EditText etEmail, etPassword, etRepassword;
@@ -81,12 +89,31 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String email = etEmail.getText().toString();
         String pword = etPassword.getText().toString();
         String repword = etRepassword.getText().toString();
-        
+
+        // validate input
         if(!hasUserFilledOutFormCorrectly(email, pword, repword)) return;
+
+        mAuth.createUserWithEmailAndPassword(email, pword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), getString(R.string.you_have_completed_signup), Toast.LENGTH_SHORT).show();
+                    clearFields();
+                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_SINGLE_TOP); // prevent going back + prevent issues with double-tap)
+                    startActivity(intent);
+            } else{
+                Toast.makeText(getApplicationContext(), "Oops, something went wrong. Please try again", Toast.LENGTH_SHORT).show();
+                clearFields();
+                etEmail.requestFocus();
+                }
+            }
+        });
     }
 
+
     private boolean hasUserFilledOutFormCorrectly(String email, String pword, String repword) {
-        String temp_email = email;
+        String temp_email = email; // TODO: remove redundancies - replace with params
         String temp_pword = pword;
         String temp_repword = repword;
 

@@ -18,4 +18,6 @@
     <string name="tracker">Tracker</string>
     <string name="logout">Log Out</string>
     <string name="passwords_not_matching">"Your passwords don't match. Try again"</string>
+    <string name="you_have_completed_signup">"Congratulations, you are now signed up </string>
+    <string name="user_already_signed_in">User is already signed in - going directly to MenuActivity</string>
 </resources>
