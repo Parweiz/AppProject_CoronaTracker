@@ -13,9 +13,18 @@
     <string name="logout">Log Out</string>
     <string name="flag">Flag</string>
     <string name="country">Country</string>
-    <string name="totalcases">Total Cases: 0.0</string>
-    <string name="todayscount">Today\'s Count</string>
-    <string name="totalcritical">Total Critical</string>
-    <string name="totaldeath">Total Death</string>
-    <string name="totalrecovered">Total Recovered</string>
+    <string name="totalcases">Total Cases: </string>
+    <string name="todayscount">Today\'s Count: </string>
+    <string name="totalcritical">Total Critical: </string>
+    <string name="totaldeath">Total Death: </string>
+    <string name="totalrecovered">Total Recovered: </string>
+    <string name="data0">0.0</string>
+    <string name="moreinfo">For more information, \nplease press on the item</string>
+    <string name="key_flag">flag</string>
+    <string name="key_country">country</string>
+    <string name="key_totalcases">totalcases</string>
+    <string name="key_todayscases">Today\'s cases</string>
+    <string name="key_totaldeaths">totaldeath</string>
+    <string name="key_totalrecovered">totalrecovered</string>
+    <string name="key_totalcritical">totalcritical</string>
 </resources>

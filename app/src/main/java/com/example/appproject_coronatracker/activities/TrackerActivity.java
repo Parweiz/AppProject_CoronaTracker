@@ -25,8 +25,9 @@ import java.util.ArrayList;
 
 import static com.example.appproject_coronatracker.service.CoronaTrackerService.ARRAY_LIST;
 
-public class TrackerActivity extends AppCompatActivity {
+public class TrackerActivity extends AppCompatActivity implements CoronaTrackerAdapter.OnItemListener {
 
+    private int wordClickedIndex;
     private ArrayList<Country> mCountryArrayList = new ArrayList<>();
     private CoronaTrackerAdapter mAdapter;
     public static final String TAG = "coronatrackerservice";
@@ -86,7 +87,7 @@ public class TrackerActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new CoronaTrackerAdapter(mCountryArrayList);
+        mAdapter = new CoronaTrackerAdapter(mCountryArrayList, this);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -136,6 +137,23 @@ public class TrackerActivity extends AppCompatActivity {
     };
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(this, DetailsActivity.class);
+        Country clickedCountry = mCountryArrayList.get(position);
+        wordClickedIndex = position;
+
+        intent.putExtra(getString(R.string.key_flag), clickedCountry.getCountryInfo().getFlag());
+        intent.putExtra(getString(R.string.key_country), clickedCountry.getCountry());
+        intent.putExtra(getString(R.string.key_totalcases), clickedCountry.getCases());
+        intent.putExtra(getString(R.string.key_todayscases), clickedCountry.getTodayCases());
+        intent.putExtra(getString(R.string.key_totaldeaths), clickedCountry.getDeaths());
+        intent.putExtra(getString(R.string.key_totalcritical), clickedCountry.getCritical());
+        intent.putExtra(getString(R.string.key_totalrecovered), clickedCountry.getRecovered());
 
 
+        startActivity(intent);
+
+
+    }
 }

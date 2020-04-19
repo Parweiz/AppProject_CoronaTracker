@@ -159,7 +159,7 @@ public class CoronaTrackerService extends Service {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("MAIN", "That did not work!", error);
+                Log.e(TAG, "That did not work!", error);
             }
         });
 
