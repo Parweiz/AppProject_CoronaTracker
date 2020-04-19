@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appproject_coronatracker.R;
 
@@ -76,7 +78,55 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void signUpButtonPressed() {
+        String email = etEmail.getText().toString();
+        String pword = etPassword.getText().toString();
+        String repword = etRepassword.getText().toString();
+        
+        if(!hasUserFilledOutFormCorrectly(email, pword, repword)) return;
+    }
 
+    private boolean hasUserFilledOutFormCorrectly(String email, String pword, String repword) {
+        String temp_email = email;
+        String temp_pword = pword;
+        String temp_repword = repword;
+
+        if(temp_email.isEmpty()){
+            Toast.makeText(this, R.string.error_form_field_must_be_filled, Toast.LENGTH_SHORT).show();
+            etEmail.requestFocus();
+            return false;
+        }
+
+        if(temp_pword.isEmpty()){
+            Toast.makeText(this, R.string.error_form_field_must_be_filled, Toast.LENGTH_SHORT).show();
+            etPassword.requestFocus();
+            return false;
+        }
+
+        if(temp_repword.isEmpty()){
+            Toast.makeText(this, R.string.error_form_field_must_be_filled, Toast.LENGTH_SHORT).show();
+            etRepassword.requestFocus();
+            return false;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(temp_email).matches()){
+            Toast.makeText(this, R.string.error_invalid_email, Toast.LENGTH_SHORT).show();
+            etEmail.requestFocus();
+            return false;
+        }
+
+        if(!pword.equals(repword)){
+            Toast.makeText(this, R.string.passwords_not_matching, Toast.LENGTH_SHORT).show();
+            etPassword.setText("");
+            etRepassword.setText("");
+            etRepassword.requestFocus();
+            return false;
+        }
+
+        if(!PASSWORD_PATTERN.matcher(temp_pword).matches()){
+            Toast
+        }
+
+        return true;
     }
 
     private void switchToLoginActivity() {

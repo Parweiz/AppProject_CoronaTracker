@@ -18,4 +18,5 @@
     <string name="maps">Maps</string>
     <string name="tracker">Tracker</string>
     <string name="logout">Log ud</string>
+    <string name="passwords_not_matching">"Dine passwords matcher ikke. Prøv igen."</string>
 </resources>
