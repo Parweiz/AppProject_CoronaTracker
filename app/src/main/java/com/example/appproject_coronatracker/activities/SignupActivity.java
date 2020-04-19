@@ -123,7 +123,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if(!PASSWORD_PATTERN.matcher(temp_pword).matches()){
-            Toast
+            Toast.makeText(this, R.string.msg_invalid_password, Toast.LENGTH_SHORT).show();
+            etPassword.setText("");
+            etRepassword.setText("");
+            etRepassword.requestFocus();
+            return false;
         }
 
         return true;

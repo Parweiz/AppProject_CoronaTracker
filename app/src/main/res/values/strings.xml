@@ -17,6 +17,5 @@
     <string name="maps">Maps</string>
     <string name="tracker">Tracker</string>
     <string name="logout">Log Out</string>
-    <string name="passwords_not_matching" />
     <string name="passwords_not_matching">"Your passwords don't match. Try again"</string>
 </resources>
