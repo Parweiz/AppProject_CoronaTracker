@@ -53,11 +53,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(savedInstanceState != null ){
-            etEmail.setText(savedInstanceState.getString(EMAIL_STRING));
-            etPassword.setText(savedInstanceState.getString(PASSWORD_STRING));
-        }
-
         // Firebase
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -66,6 +61,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login_login);
         tvNotUserYet = findViewById(R.id.tv_notauseryet_login);
+
+        if(savedInstanceState != null ){
+            etEmail.setText(savedInstanceState.getString(EMAIL_STRING));
+            etPassword.setText(savedInstanceState.getString(PASSWORD_STRING));
+        }
+
+        if(mUser != null){
+            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+        }
+
     }
 
     @Override
@@ -86,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), getString(R.string.welcome_login), Toast.LENGTH_SHORT).show();
                     clearFields();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class); // TODO: Change to MenuActivity - Main chosen temp. for test purposes
+                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | intent.FLAG_ACTIVITY_SINGLE_TOP); // prevent going back + prevent issues with double-tap
                     startActivity(intent);
                 } else{
