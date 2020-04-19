@@ -20,4 +20,12 @@
     <string name="passwords_not_matching">"Your passwords don't match. Try again"</string>
     <string name="you_have_completed_signup">"Congratulations, you are now signed up </string>
     <string name="user_already_signed_in">User is already signed in - going directly to MenuActivity</string>
+    <string name="enter_password">Code</string>
+    <string name="reenter_password">Reenter code</string>
+    <string name="enter_email">Email </string>
+    <string name="signup_btn">Signup</string>
+    <string name="question_already_user">Already registered? Click here</string>
+    <string name="question_not_a_user">Not registered? Click here</string>
+    <string name="login">Login</string>
+    <string name="logging_out_message">Logging out</string>
 </resources>

@@ -3,11 +3,14 @@ package com.example.appproject_coronatracker.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,8 +29,8 @@ import java.util.regex.Pattern;
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = SignupActivity.class.getSimpleName();
-    String msg_valid_password = getResources().getString(R.string.msg_valid_password);
-    String msg_invalid_password = getResources().getString(R.string.msg_invalid_password);
+//    String msg_valid_password = getResources().getString(R.string.msg_valid_password);
+//    String msg_invalid_password = getResources().getString(R.string.msg_invalid_password);
 
     public static final String EMAIL_STRING = "emailstring";
     public static final String PASSWORD_STRING = "passwordstring";
@@ -77,6 +80,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         btnSignUp = findViewById(R.id.btn_signup_signup);
         tvAlreadyUser = findViewById(R.id.tv_alreadyuser_signup);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        btnSignUp.setOnClickListener(this);
+        tvAlreadyUser.setOnClickListener(this);
     }
 
     @Override
@@ -150,7 +157,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if(!PASSWORD_PATTERN.matcher(temp_pword).matches()){
-            Toast.makeText(this, R.string.msg_invalid_password, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.msg_invalid_password, Toast.LENGTH_LONG).show();
             etPassword.setText("");
             etRepassword.setText("");
             etRepassword.requestFocus();
@@ -171,6 +178,15 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         etEmail.setText("");
         etPassword.setText("");
         etRepassword.setText("");
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

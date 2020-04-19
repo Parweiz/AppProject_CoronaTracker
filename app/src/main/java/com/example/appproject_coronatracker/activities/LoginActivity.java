@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,6 +36,7 @@ import java.util.regex.Pattern;
 // resource: SMAP L10: Mobile Backends (w/ Firebase)
 // resource: https://stackoverflow.com/questions/16812039/how-to-check-valid-email-format-entered-in-edittext
 // resource: https://www.techiedelight.com/validate-password-java/
+// resource: https://stackoverflow.com/questions/4165414/how-to-hide-soft-keyboard-on-android-after-clicking-outside-edittext
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final int RC_SIGN_IN = 1337;
@@ -72,6 +77,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
         }
 
+        btnLogin.setOnClickListener(this);
+        tvNotUserYet.setOnClickListener(this);
     }
 
     @Override
@@ -144,6 +151,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Log.d(TAG, "Clearing fields");
         etEmail.setText("");
         etPassword.setText("");
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
