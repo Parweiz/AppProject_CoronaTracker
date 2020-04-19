@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,12 +21,13 @@ import java.util.ArrayList;
 public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdapter.WordViewHolder> {
 
     private ArrayList<Country> mCountryArrayList;
+   //  private ArrayList<Country> mCountryArrayListFull;
     private OnItemListener mOnItemListener;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
         ImageView imageView;
-        TextView txtCountry, txtTotalCases, txtTodaysCount, txtTotalDeaths, txtTotalCritical, txtTotalRecovered;
+        TextView txtCountry;
         OnItemListener onItemListener;
 
         public WordViewHolder(@NonNull View itemView, OnItemListener onItemListener) {
@@ -32,11 +35,6 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
 
             imageView = itemView.findViewById(R.id.flag);
             txtCountry = itemView.findViewById(R.id.txtCountryName);
-           /* txtTotalCases = itemView.findViewById(R.id.txtTotalCases);
-            txtTodaysCount = itemView.findViewById(R.id.txtTodaysCount);
-            txtTotalDeaths = itemView.findViewById(R.id.txtTotalDeath);
-            txtTotalCritical = itemView.findViewById(R.id.txtTotalCritical);
-            txtTotalRecovered = itemView.findViewById(R.id.txtTotalRecovered);*/
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);
@@ -51,6 +49,7 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
     public CoronaTrackerAdapter(ArrayList<Country> countries, OnItemListener onItemListener) {
         this.mCountryArrayList = countries;
         this.mOnItemListener = onItemListener;
+        // this.mCountryArrayListFull = new ArrayList<>(countries);
     }
 
     @NonNull
@@ -69,11 +68,6 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
                 .into(holder.imageView);
 
         holder.txtCountry.setText(mCountryArrayList.get(position).getCountry());
-       /* holder.txtTotalCases.setText("Total cases: " + mCountryArrayList.get(position).getCases());
-        holder.txtTodaysCount.setText("Today's Count: " + "\n" + mCountryArrayList.get(position).getTodayCases());
-        holder.txtTotalDeaths.setText("Total Death: \n" + mCountryArrayList.get(position).getDeaths());
-        holder.txtTotalCritical.setText("Total Critical: \n" + mCountryArrayList.get(position).getCritical());
-        holder.txtTotalRecovered.setText("Total Recovered: \n" + mCountryArrayList.get(position).getRecovered());*/
     }
 
     @Override
@@ -91,5 +85,41 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         mCountryArrayList = newList;
         notifyDataSetChanged();
     }
+
+    /*@Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Country> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(mCountryArrayListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Country item : mCountryArrayListFull) {
+                        if (item.getCountry().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mCountryArrayList.clear();
+            mCountryArrayList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };*/
 
 }

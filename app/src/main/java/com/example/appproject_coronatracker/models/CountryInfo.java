@@ -16,10 +16,10 @@ public class CountryInfo {
     private String iso3;
     @SerializedName("lat")
     @Expose
-    private Integer lat;
+    private Double lat;
     @SerializedName("long")
     @Expose
-    private Integer _long;
+    private Double _long;
     @SerializedName("flag")
     @Expose
     private String flag;
@@ -40,7 +40,7 @@ public class CountryInfo {
      * @param lat
      * @param iso3
      */
-    public CountryInfo(Integer id, String iso2, String iso3, Integer lat, Integer _long, String flag) {
+    public CountryInfo(Integer id, String iso2, String iso3, Double lat, Double _long, String flag) {
         super();
         this.id = id;
         this.iso2 = iso2;
@@ -74,19 +74,19 @@ public class CountryInfo {
         this.iso3 = iso3;
     }
 
-    public Integer getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(Integer lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public Integer getLong() {
+    public Double getLong() {
         return _long;
     }
 
-    public void setLong(Integer _long) {
+    public void setLong(Double _long) {
         this._long = _long;
     }
 

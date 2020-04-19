@@ -13,8 +13,16 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.adapter.CoronaTrackerAdapter;
@@ -43,6 +51,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
 
         setUpRecyclerView();
         boundServiceSetupFunction();
+        searchFunc();
     }
 
     @Override
@@ -64,6 +73,38 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         LocalBroadcastManager.getInstance(this).unregisterReceiver(localBroadcastReceiver);
     }
 
+    private void searchFunc() {
+        EditText editText = findViewById(R.id.editTextSearch);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<Country> filteredList = new ArrayList<>();
+
+        for (Country item : mCountryArrayList) {
+            if (item.getCountry().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        mAdapter.updateData(filteredList);
+    }
+
     private void bindingToTheService() {
         Log.d(TAG, "Binding to the service from DetailsActivity ");
         Intent intent = new Intent(this, CoronaTrackerService.class);
@@ -78,7 +119,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         }
     }
 
-    public void backBtn (View v) {
+    public void backBtn(View v) {
         setResult(RESULT_CANCELED);
         finish();
     }
@@ -93,12 +134,45 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    private void initialData() {
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.coronatracker_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }*/
+
+    public void addDataBtn(View v) {
 
         String server_url = "https://corona.lmao.ninja/v2/countries/";
-        String country = "denmark";
+        String country_denmark = "denmark";
+        String country_italy = "italy";
+        String country_usa = "USA";
+        String country_spain = "spain";
+        String country_china = "china";
 
-        coronaTrackerService.volleyRequest(server_url + country);
+        coronaTrackerService.volleyRequest(server_url + country_denmark);
+        coronaTrackerService.volleyRequest(server_url + country_italy);
+        coronaTrackerService.volleyRequest(server_url + country_usa);
+        coronaTrackerService.volleyRequest(server_url + country_spain);
+        coronaTrackerService.volleyRequest(server_url + country_china);
 
     }
 
@@ -110,8 +184,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
                 coronaTrackerService = binder.getService();
                 mBound = true;
                 Log.d(TAG, "Boundservice connected - TrackerActivity");
-                initialData();
-
+                // initialData();
             }
 
             public void onServiceDisconnected(ComponentName className) {
