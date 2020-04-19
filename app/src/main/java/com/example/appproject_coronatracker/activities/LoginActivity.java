@@ -129,6 +129,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void switchToSignupActivity() {
         Log.d(TAG, "Switching to sign up activity");
+        clearFields();
         startActivity(new Intent(this, SignupActivity.class));
     }
 
