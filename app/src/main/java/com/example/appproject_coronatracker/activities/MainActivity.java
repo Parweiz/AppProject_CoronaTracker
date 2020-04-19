@@ -80,4 +80,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
+
+    public void menuBtn(View v) {
+        Intent i = new Intent(MainActivity.this, MenuActivity.class);
+        startActivity(i);
+    }
 }

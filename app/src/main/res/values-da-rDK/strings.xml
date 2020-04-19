@@ -14,4 +14,8 @@
     <string name="msg_valid_password" />
     <string name="msg_invalid_password" />
     <string name="error_user_already_exists">Brugeren findes allerede!</string>
+    <string name="pickoption">Vælg venligst</string>
+    <string name="maps">Maps</string>
+    <string name="tracker">Tracker</string>
+    <string name="logout">Log ud</string>
 </resources>
