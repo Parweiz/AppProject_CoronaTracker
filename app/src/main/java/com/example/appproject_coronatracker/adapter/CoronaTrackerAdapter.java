@@ -58,11 +58,11 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
                 .into(holder.imageView);
 
         holder.txtCountry.setText(mCountryArrayList.get(position).getCountry());
-        holder.txtTotalCases.setText(mCountryArrayList.get(position).getCases());
-        holder.txtTodaysCount.setText(mCountryArrayList.get(position).getTodayCases());
-        holder.txtTotalDeaths.setText(mCountryArrayList.get(position).getDeaths());
-        holder.txtTotalCritical.setText(mCountryArrayList.get(position).getCritical());
-        holder.txtTotalRecovered.setText(mCountryArrayList.get(position).getRecovered());
+        holder.txtTotalCases.setText("Total cases: " + mCountryArrayList.get(position).getCases().toString());
+        holder.txtTodaysCount.setText("Today's Count: " + "\n" + mCountryArrayList.get(position).getTodayCases());
+        holder.txtTotalDeaths.setText("Total Death: \n" + mCountryArrayList.get(position).getDeaths());
+        holder.txtTotalCritical.setText("Total Critical: \n" + mCountryArrayList.get(position).getCritical());
+        holder.txtTotalRecovered.setText("Total Recovered: \n" + mCountryArrayList.get(position).getRecovered());
     }
 
     @Override
@@ -70,6 +70,11 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         if (mCountryArrayList != null) {
             return mCountryArrayList.size();
         } else return 0;
+    }
+
+    public void updateData(ArrayList<Country> newList) {
+        mCountryArrayList = newList;
+        notifyDataSetChanged();
     }
 
 }

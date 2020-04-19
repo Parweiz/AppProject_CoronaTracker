@@ -45,4 +45,5 @@ dependencies {
 
     // Recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

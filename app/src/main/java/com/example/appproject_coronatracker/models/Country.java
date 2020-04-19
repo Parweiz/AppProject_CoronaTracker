@@ -7,7 +7,7 @@ public class Country {
 
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private Double updated;
     @SerializedName("country")
     @Expose
     private String country;
@@ -76,7 +76,7 @@ public class Country {
      * @param todayCases
      * @param todayDeaths
      */
-    public Country(Integer updated, String country, CountryInfo countryInfo, Integer cases, Integer todayCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer active, Integer critical, Integer casesPerOneMillion, Integer deathsPerOneMillion, Integer tests, Integer testsPerOneMillion, String continent) {
+    public Country(Double updated, String country, CountryInfo countryInfo, Integer cases, Integer todayCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer active, Integer critical, Integer casesPerOneMillion, Integer deathsPerOneMillion, Integer tests, Integer testsPerOneMillion, String continent) {
         super();
         this.updated = updated;
         this.country = country;
@@ -95,11 +95,11 @@ public class Country {
         this.continent = continent;
     }
 
-    public Integer getUpdated() {
+    public Double getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(Double updated) {
         this.updated = updated;
     }
 
