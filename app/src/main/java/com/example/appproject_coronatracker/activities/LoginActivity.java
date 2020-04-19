@@ -133,20 +133,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(new Intent(this, SignupActivity.class));
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_SIGN_IN){
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-            if(resultCode == RESULT_OK){
-                Toast.makeText(getApplicationContext(), getString(R.string.welcome_login), Toast.LENGTH_SHORT).show();
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Log.d(TAG, user.getUid()); // print userid if succeeded.
-            } else
-                Log.d(TAG, response.getError().getMessage());
-        }
-    }
-
     private void clearFields(){
         Log.d(TAG, "Clearing fields");
         etEmail.setText("");
