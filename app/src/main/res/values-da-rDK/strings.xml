@@ -11,8 +11,8 @@
     <string name="welcome_login">Velkommen</string>
     <string name="error_form_field_must_be_filled">Feltet må ikke være tomt</string>
     <string name="error_invalid_email">E-mail invalid</string>
-    <string name="msg_valid_password" />
-    <string name="msg_invalid_password" />
+    <string name="msg_valid_password">Password valid</string>
+    <string name="msg_invalid_password">Password invalid! 4–8 karakters password, kræver tal og bogstaver (store og små)</string>
     <string name="error_user_already_exists">Brugeren findes allerede!</string>
     <string name="pickoption">Vælg venligst</string>
     <string name="maps">Maps</string>

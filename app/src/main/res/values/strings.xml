@@ -11,7 +11,7 @@
     <string name="error_form_field_must_be_filled">Field must not be empty</string>
     <string name="error_invalid_email">E-mail invalid</string>
     <string name="msg_valid_password">Password valid</string>
-    <string name="msg_invalid_password">Password invalid! 4-8 character password requiring numbers and alphabets of both cases</string>
+    <string name="msg_invalid_password">Password invalid! 4–8 character password requiring numbers and alphabets of both cases</string>
     <string name="error_user_already_exists">User already exists!</string>
     <string name="pickoption">Please choose an option</string>
     <string name="maps">Maps</string>
