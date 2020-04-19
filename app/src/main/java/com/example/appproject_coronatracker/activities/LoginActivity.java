@@ -66,15 +66,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login_login);
         tvNotUserYet = findViewById(R.id.tv_notauseryet_login);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<AuthUI.IdpConfig> providers = Arrays.asList(
-                        new AuthUI.IdpConfig.EmailBuilder().build());
-                        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build(), RC_SIGN_IN);
-            }
-        });
     }
 
     @Override
@@ -87,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email = etEmail.getText().toString();
         String pword = etPassword.getText().toString();
 
-        if(hasUserFilledOutFormCorrectly(email, pword) == false) return;
+        if(!hasUserFilledOutFormCorrectly(email, pword)) return;
 
         mAuth.signInWithEmailAndPassword(email, pword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
