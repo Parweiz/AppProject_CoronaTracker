@@ -76,6 +76,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void signUpButtonPressed() {
+
     }
 
     private void switchToLoginActivity() {
