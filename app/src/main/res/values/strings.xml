@@ -11,4 +11,11 @@
     <string name="maps">Maps</string>
     <string name="tracker">Tracker</string>
     <string name="logout">Log Out</string>
+    <string name="flag">Flag</string>
+    <string name="country">Country</string>
+    <string name="totalcases">Total Cases: 0.0</string>
+    <string name="todayscount">Today\'s Count</string>
+    <string name="totalcritical">Total Critical</string>
+    <string name="totaldeath">Total Death</string>
+    <string name="totalrecovered">Total Recovered</string>
 </resources>
