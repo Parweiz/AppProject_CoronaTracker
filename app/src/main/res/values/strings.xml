@@ -7,4 +7,10 @@
     <string name="back">Back</string>
     <string name="notificationtitle">CoronaTracker title </string>
     <string name="notificationtext">CoronaTracker text </string>
+    <string name="welcome_login">Welcome</string>
+    <string name="error_form_field_must_be_filled">Field must not be empty</string>
+    <string name="error_invalid_email">E-mail invalid</string>
+    <string name="msg_valid_password">Password valid</string>
+    <string name="msg_invalid_password">Password invalid! 4-8 character password requiring numbers and alphabets of both cases</string>
+    <string name="error_user_already_exists">User already exists!</string>
 </resources>

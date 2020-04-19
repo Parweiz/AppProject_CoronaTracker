@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppProject - CoronaTracker</string>
+    <string name="service" translatable="false">En service, der kører i baggrunden</string>
+    <string name="exit">Exit</string>
+    <string name="add">Tilføj</string>
+    <string name="getall">Hent alle</string>
+    <string name="back">Tilbage</string>
+    <string name="notificationtitle">CoronaTracker title </string>
+    <string name="notificationtext">CoronaTracker text </string>
+    <string name="welcome_login">Velkommen</string>
+    <string name="error_form_field_must_be_filled">Feltet må ikke være tomt</string>
+    <string name="error_invalid_email">E-mail invalid</string>
+    <string name="msg_valid_password" />
+    <string name="msg_invalid_password" />
+    <string name="error_user_already_exists">Brugeren findes allerede!</string>
+</resources>
