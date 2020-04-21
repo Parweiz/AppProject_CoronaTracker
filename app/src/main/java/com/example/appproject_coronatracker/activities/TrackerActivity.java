@@ -44,6 +44,8 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     private ServiceConnection boundService;
     private boolean mBound = false;
 
+    private EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +76,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     }
 
     private void searchFunc() {
-        EditText editText = findViewById(R.id.editTextSearch);
+        editText = findViewById(R.id.editTextSearch);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,6 +93,8 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
                 filter(s.toString());
             }
         });
+
+
     }
 
     private void filter(String text) {
@@ -134,46 +138,10 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.coronatracker_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                mAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }*/
 
     public void addDataBtn(View v) {
-
-        String server_url = "https://corona.lmao.ninja/v2/countries/";
-        String country_denmark = "denmark";
-        String country_italy = "italy";
-        String country_usa = "USA";
-        String country_spain = "spain";
-        String country_china = "china";
-
-        coronaTrackerService.volleyRequest(server_url + country_denmark);
-        coronaTrackerService.volleyRequest(server_url + country_italy);
-        coronaTrackerService.volleyRequest(server_url + country_usa);
-        coronaTrackerService.volleyRequest(server_url + country_spain);
-        coronaTrackerService.volleyRequest(server_url + country_china);
-
+        String country = editText.getText().toString();
+        coronaTrackerService.addCountry(country);
     }
 
     private void boundServiceSetupFunction() {
@@ -184,7 +152,6 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
                 coronaTrackerService = binder.getService();
                 mBound = true;
                 Log.d(TAG, "Boundservice connected - TrackerActivity");
-                // initialData();
             }
 
             public void onServiceDisconnected(ComponentName className) {
@@ -224,9 +191,6 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         intent.putExtra(getString(R.string.key_totalcritical), clickedCountry.getCritical());
         intent.putExtra(getString(R.string.key_totalrecovered), clickedCountry.getRecovered());
 
-
         startActivity(intent);
-
-
     }
 }

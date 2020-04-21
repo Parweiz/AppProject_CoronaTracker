@@ -5,7 +5,7 @@
     <string name="add">Add Data</string>
     <string name="getall">Get All</string>
     <string name="back">Back</string>
-    <string name="notificationtitle">CoronaTracker title </string>
+    <string name="notificationtitle">CoronaTracker </string>
     <string name="notificationtext">CoronaTracker text </string>
     <string name="pickoption">Please choose an option</string>
     <string name="maps">Maps</string>
@@ -27,4 +27,6 @@
     <string name="key_totaldeaths">totaldeath</string>
     <string name="key_totalrecovered">totalrecovered</string>
     <string name="key_totalcritical">totalcritical</string>
+    <string name="search_text">Search through the list of countries. PS: If a country doesn\'t exist in the list,
+        then feel free to add it yourself to the list</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.appproject_coronatracker.service;
 
-import android.app.ListActivity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,6 +14,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -23,19 +23,29 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appproject_coronatracker.R;
+import com.example.appproject_coronatracker.activities.MainActivity;
 import com.example.appproject_coronatracker.models.Country;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CoronaTrackerService extends Service {
 
@@ -48,12 +58,17 @@ public class CoronaTrackerService extends Service {
     private CharSequence CHANNEL_NAME = "WordLearnerService Channel";
 
     private ArrayList<Country> mCountryArrayList = new ArrayList<>();
+    private List<String> mStringArrayList = new ArrayList<>();
     private boolean runAsForegroundService = true;
     private boolean started = false;
     Context mContext;
     private ExecutorService execService;
     private RequestQueue queue;
     private Random random = new Random();
+
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private DocumentReference notificationsRef = firestore.document("notifications/z9cotEfKEd6epuh71k2n");
+
 
 
     public class LocalBinder extends Binder {
@@ -66,6 +81,9 @@ public class CoronaTrackerService extends Service {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+
+       // addDataForNotifcation();
+        getDatafromFirestore();
     }
 
     @Override
@@ -88,14 +106,14 @@ public class CoronaTrackerService extends Service {
                 }
 
 
-                Intent notificationIntent = new Intent(this, ListActivity.class);
+                Intent notificationIntent = new Intent(this, MainActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(
                         this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_announcement_black_24dp)
                         .setContentTitle(getString(R.string.notificationtitle))
-                        .setContentText(getString(R.string.notificationtext))
+                        //.setContentText(getString(R.string.notificationtext))
                         .setAutoCancel(true)
                         .setContentIntent(pendingIntent)
                         .setPriority(NotificationCompat.PRIORITY_MAX)
@@ -105,6 +123,8 @@ public class CoronaTrackerService extends Service {
                 startForeground(NOTIFICATION_ID, notification);
 
             }
+            // Sleep time for 3 mins
+            recursiveSleepWork(180000L);
 
         } else {
             Log.d(TAG, "Background service already started!");
@@ -127,28 +147,16 @@ public class CoronaTrackerService extends Service {
         super.onDestroy();
     }
 
+    public void addCountry(String word) {
+
+        String server_url = "https://corona.lmao.ninja/v2/countries/";
+        volleyRequest(server_url + word);
+    }
+
     public void volleyRequest(String url) {
         if (queue == null) {
             queue = Volley.newRequestQueue(mContext);
         }
-
-        /*final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, "onResponse: " + response);
-                        parseJson(response.toString());
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-                Log.e(TAG, "That did not work!", error);
-            }
-        });*/
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -183,6 +191,7 @@ public class CoronaTrackerService extends Service {
 
         @Override
         protected Void doInBackground(Country... countries) {
+
             return null;
         }
 
@@ -209,5 +218,115 @@ public class CoronaTrackerService extends Service {
 
 
     }
+
+    private void recursiveSleepWork(final Long sleepTime) {
+        if (execService == null) {
+            execService = Executors.newSingleThreadExecutor();
+        }
+
+        execService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.d(TAG, "Task started");
+                    if (mStringArrayList.size() > 0) {
+                       getRandomAdvice(mStringArrayList);
+                    }
+                    Log.d(TAG, "Task completed - Will now sleep for 1 min");
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (started) {
+                    recursiveSleepWork(sleepTime);
+                }
+            }
+        });
+    }
+
+    private void getDatafromFirestore() {
+
+        notificationsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                       String advice1 = document.getString("advice1");
+                        String advice2 = document.getString("advice2");
+                        String advice3 = document.getString("advice3");
+                        String advice4 = document.getString("advice4");
+                        String advice5 = document.getString("advice5");
+                        String advices = advice1 + ";" + advice2 + ";" + advice3 + ";" + advice4 + ";" + advice5;
+
+                        mStringArrayList = new ArrayList<>(Arrays.asList(advices.split(";")));
+
+                        Log.d(TAG, "onComplete: " + mStringArrayList);
+
+
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+
+    private void addDataForNotifcation() {
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("advice1", "Wash your hands frequently or sanitize your hands with an alcohol-based hand rub");
+        data.put("advice2", "Cough or sneeze into your sleeve - not your hands" );
+        data.put("advice3", "Limit physical contact – avoid handshakes, refuse kisses on the cheek and avoid hugging");
+        data.put("advice4", "Be diligent with cleaning – both at home and in your workplace");
+        data.put("advice5", "Keep your distance and ask others to be considerate");
+
+
+        firestore.collection("notifications")
+                .add(data)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+    }
+
+    private void getRandomAdvice(List<String> list) {
+        int index = random.nextInt(list.size());
+        Log.d(TAG, "index: " + index + ", advice: " + list.get(index));
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_announcement_black_24dp)
+                .setContentTitle(getString(R.string.notificationtitle))
+                //.setContentText(list.get(index))
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(list.get(index)))
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        startForeground(NOTIFICATION_ID, notification);
+
+    }
+
 }
 
