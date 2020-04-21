@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdapter.WordViewHolder> {
 
     private ArrayList<Country> mCountryArrayList;
-   //  private ArrayList<Country> mCountryArrayListFull;
     private OnItemListener mOnItemListener;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
@@ -49,7 +48,6 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
     public CoronaTrackerAdapter(ArrayList<Country> countries, OnItemListener onItemListener) {
         this.mCountryArrayList = countries;
         this.mOnItemListener = onItemListener;
-        // this.mCountryArrayListFull = new ArrayList<>(countries);
     }
 
     @NonNull
@@ -85,41 +83,5 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         mCountryArrayList = newList;
         notifyDataSetChanged();
     }
-
-    /*@Override
-    public Filter getFilter() {
-        return exampleFilter;
-    }
-
-    private Filter exampleFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Country> filteredList = new ArrayList<>();
-
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(mCountryArrayListFull);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for (Country item : mCountryArrayListFull) {
-                        if (item.getCountry().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(item);
-                    }
-                }
-            }
-
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mCountryArrayList.clear();
-            mCountryArrayList.addAll((ArrayList) results.values);
-            notifyDataSetChanged();
-        }
-    };*/
 
 }

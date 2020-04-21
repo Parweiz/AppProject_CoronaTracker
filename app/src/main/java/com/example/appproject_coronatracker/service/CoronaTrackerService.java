@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appproject_coronatracker.R;
+import com.example.appproject_coronatracker.activities.LoginActivity;
 import com.example.appproject_coronatracker.activities.MainActivity;
 import com.example.appproject_coronatracker.models.Country;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -105,15 +106,15 @@ public class CoronaTrackerService extends Service {
                     notificationManager.createNotificationChannel(serviceChannel);
                 }
 
-
-                Intent notificationIntent = new Intent(this, MainActivity.class);
+                Intent notificationIntent = new Intent(this, LoginActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(
                         this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_announcement_black_24dp)
                         .setContentTitle(getString(R.string.notificationtitle))
-                        //.setContentText(getString(R.string.notificationtext))
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText(getString(R.string.advice1)))
                         .setAutoCancel(true)
                         .setContentIntent(pendingIntent)
                         .setPriority(NotificationCompat.PRIORITY_MAX)
@@ -122,9 +123,10 @@ public class CoronaTrackerService extends Service {
 
                 startForeground(NOTIFICATION_ID, notification);
 
+
             }
-            // Sleep time for 3 mins
-            recursiveSleepWork(180000L);
+            // Sleep time for 2 mins
+            recursiveSleepWork(120000L);
 
         } else {
             Log.d(TAG, "Background service already started!");
@@ -263,9 +265,6 @@ public class CoronaTrackerService extends Service {
 
                         mStringArrayList = new ArrayList<>(Arrays.asList(advices.split(";")));
 
-                        Log.d(TAG, "onComplete: " + mStringArrayList);
-
-
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -280,12 +279,11 @@ public class CoronaTrackerService extends Service {
     private void addDataForNotifcation() {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("advice1", "Wash your hands frequently or sanitize your hands with an alcohol-based hand rub");
-        data.put("advice2", "Cough or sneeze into your sleeve - not your hands" );
-        data.put("advice3", "Limit physical contact – avoid handshakes, refuse kisses on the cheek and avoid hugging");
-        data.put("advice4", "Be diligent with cleaning – both at home and in your workplace");
-        data.put("advice5", "Keep your distance and ask others to be considerate");
-
+        data.put("advice1", getString(R.string.advice1));
+        data.put("advice2", getString(R.string.advice2) );
+        data.put("advice3", getString(R.string.advice3));
+        data.put("advice4", getString(R.string.advice4));
+        data.put("advice5", getString(R.string.advice5));
 
         firestore.collection("notifications")
                 .add(data)
@@ -308,7 +306,7 @@ public class CoronaTrackerService extends Service {
         int index = random.nextInt(list.size());
         Log.d(TAG, "index: " + index + ", advice: " + list.get(index));
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, LoginActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

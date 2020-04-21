@@ -190,6 +190,8 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         intent.putExtra(getString(R.string.key_totaldeaths), clickedCountry.getDeaths());
         intent.putExtra(getString(R.string.key_totalcritical), clickedCountry.getCritical());
         intent.putExtra(getString(R.string.key_totalrecovered), clickedCountry.getRecovered());
+        intent.putExtra(getString(R.string.activecases), clickedCountry.getActive());
+        intent.putExtra(getString(R.string.key_totaltests), clickedCountry.getTests());
 
         startActivity(intent);
     }

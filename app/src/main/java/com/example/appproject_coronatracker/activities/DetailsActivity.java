@@ -16,7 +16,7 @@ import com.example.appproject_coronatracker.R;
 public class DetailsActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    private TextView txtCountry, txtTotalCases, txtTodaysCount, txtTotalDeaths, txtTotalCritical, txtTotalRecovered;
+    private TextView txtCountry, txtTotalCases, txtTodaysCount, txtTotalDeaths, txtTotalCritical, txtTotalRecovered, txtActiveCases, txtTotalTests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class DetailsActivity extends AppCompatActivity {
         txtTotalDeaths = findViewById(R.id.mDetailsTotalDeathsText);
         txtTotalCritical = findViewById(R.id.mDetailsTotalCriticalText);
         txtTotalRecovered = findViewById(R.id.mDetailsTotalRecoveredText);
+        txtActiveCases = findViewById(R.id.mDetailsActiveCasesText);
+        txtTotalTests = findViewById(R.id.mDetailsTotalTestsText);
 
         gettingDataFromTrackerActivity();
     }
@@ -46,6 +48,8 @@ public class DetailsActivity extends AppCompatActivity {
         txtTotalDeaths.setText("" + intent.getIntExtra(getString(R.string.key_totaldeaths), 0));
         txtTotalCritical.setText("" + intent.getIntExtra(getString(R.string.key_totalcritical), 0));
         txtTotalRecovered.setText("" + intent.getIntExtra(getString(R.string.key_totalrecovered), 0));
+        txtActiveCases.setText("" + intent.getIntExtra(getString(R.string.activecases), 0));
+        txtTotalTests.setText("" + intent.getIntExtra(getString(R.string.key_totaltests), 0));
     }
 
     public void mDetailsBackBtn(View v) {
