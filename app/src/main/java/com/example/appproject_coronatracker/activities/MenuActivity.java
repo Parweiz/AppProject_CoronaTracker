@@ -21,6 +21,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
+
+
     public void trackerBtn(View v) {
         Intent intent = new Intent(MenuActivity.this, TrackerActivity.class);
         startActivity(intent);

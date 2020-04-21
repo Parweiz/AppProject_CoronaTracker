@@ -69,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 CoronaTrackerService.LocalBinder binder = (CoronaTrackerService.LocalBinder) service;
                 coronaTrackerService = binder.getService();
                 mBound = true;
-                Log.d(TAG, "Boundservice connected - ListActivity");
+                Log.d(TAG, "Boundservice connected - MainActivity");
 
             }
 
             public void onServiceDisconnected(ComponentName className) {
                 coronaTrackerService = null;
                 mBound = false;
-                Log.d(TAG, "Boundservice disconnected - ListActivity");
+                Log.d(TAG, "Boundservice disconnected - MainActivity");
             }
         };
     }
