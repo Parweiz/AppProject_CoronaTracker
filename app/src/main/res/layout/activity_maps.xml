@@ -4,23 +4,152 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MapsActivity"
     android:background="@color/colorBackground"
-    >
+    tools:context=".activities.MapsActivity">
+
+    <TextView
+        android:id="@+id/tv_notes_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes:"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="470dp" />
+
+    <TextView
+        android:id="@+id/tv_status_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="418dp" />
 
     <Button
+        android:id="@+id/btn_back_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
-        android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:onClick="backBtn"
+        android:text="@string/back"
 
-        />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <Button
+        android:id="@+id/btn_add_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="@string/add"
+
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <Button
+        android:id="@+id/btn_mine_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="MINE"
+
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <Button
+        android:id="@+id/btn_all_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="ALL"
+
+        tools:layout_editor_absoluteX="316dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapview_maps"
+        android:layout_width="397dp"
+        android:layout_height="268dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/tv_gender_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender:"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <TextView
+        android:id="@+id/tv_age_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.484"
+        tools:layout_editor_absoluteX="11dp" />
+
+    <TextView
+        android:id="@+id/tv_otherdiseases_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Other diseases:"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <TextView
+        android:id="@+id/tv_notes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="403dp" />
+
+    <Spinner
+        android:id="@+id/spin_gender_maps"
+        android:layout_width="259dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="307dp" />
+
+    <Spinner
+        android:id="@+id/spin_age_maps"
+        android:layout_width="259dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <Spinner
+        android:id="@+id/spin_otherdiseases_maps"
+        android:layout_width="259dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <Spinner
+        android:id="@+id/spin_status_maps"
+        android:layout_width="259dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="418dp" />
+
+    <TextView
+        android:id="@+id/tv_notesfield_maps"
+        android:layout_width="256dp"
+        android:layout_height="181dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="470dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
