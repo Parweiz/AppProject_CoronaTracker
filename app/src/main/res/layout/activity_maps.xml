@@ -144,8 +144,8 @@
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="418dp" />
 
-    <TextView
-        android:id="@+id/tv_notesfield_maps"
+    <EditText
+        android:id="@+id/et_notesfield_maps"
         android:layout_width="256dp"
         android:layout_height="181dp"
         android:text="TextView"
