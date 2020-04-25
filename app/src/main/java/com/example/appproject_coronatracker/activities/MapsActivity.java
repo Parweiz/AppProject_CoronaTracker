@@ -3,7 +3,9 @@ package com.example.appproject_coronatracker.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -15,13 +17,16 @@ import android.widget.Spinner;
 import com.example.appproject_coronatracker.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.type.LatLng;
 
 // reference: https://firebase.google.com/docs/auth/web/manage-users
 // reference: spinner: https://www.youtube.com/watch?v=on_OrrX7Nw4
@@ -76,6 +81,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         };
 
+        mapView = findViewById(R.id.mapview_maps);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(MapsActivity.this);
 
@@ -85,6 +91,37 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnAll = findViewById(R.id.btn_all_maps);
         etNotesField = findViewById(R.id.et_notesfield_maps);
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnMine.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnAll.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public void backBtn (View v) {
@@ -94,6 +131,37 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        MapsActivity.this.gMap = googleMap;
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                if (!cameraSet) {
+                    userLatLong = new LatLng(location.getLatitude(), location.getLongitude());
+                    gMap.clear();
+                    gMap.addMarker(new MarkerOptions().position(userLatLong).title("X"))
+                            .setDraggable(true);
 
+                    gMap.getUiSettings().setZoomControlsEnabled(true);
+                    gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLong, mapZoomLevel));
+                    cameraSet = true;
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
     }
 }
