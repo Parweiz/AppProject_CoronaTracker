@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -102,6 +103,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnAll = findViewById(R.id.btn_all_maps);
         etNotesField = findViewById(R.id.et_notesfield_maps);
 
+        spinGender = findViewById(R.id.spin_gender_maps);
+        spinAge = findViewById(R.id.spin_age_maps);
+        spinOtherdiseases = findViewById(R.id.spin_otherdiseases_maps);
+        spinStatus = findViewById(R.id.spin_status_maps);
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -132,6 +138,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Toast.makeText(MapsActivity.this, R.string.spinner_status_not_chosen, Toast.LENGTH_LONG).show();
                 }
 
+                // fetch current position
+                GeoPoint geoPoint = new GeoPoint(userLatLong.latitude, userLatLong. longitude);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                // TODO: Find out what collection, we use in firebase.
+
             }
         });
 
@@ -139,7 +152,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onClick(View v) {
-
+                clearFields();
+                startActivity(new Intent(MapsActivity.this, MenuActivity.class));
             }
         });
 
@@ -158,6 +172,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+    }
+
+    private void clearFields() {
+        spinAge.setSelection(0);
+        spinGender.setSelection(0);
+        spinOtherdiseases.setSelection(0);
+        spinStatus.setSelection(0);
+        etNotesField.setText("");
+        gMap.clear();
     }
 
     public void backBtn (View v) {

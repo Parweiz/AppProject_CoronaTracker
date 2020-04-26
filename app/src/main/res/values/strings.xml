@@ -32,4 +32,18 @@
     <string name="spinner_age_not_chosen">Hey! Choose an age!</string>
     <string name="spinner_other_diseases_not_chosen">Hey! Does the patient have other diseases?</string>
     <string name="spinner_status_not_chosen">Hey! Choose a status!</string>
+    <string-array name="spin_age_maps">
+        <item>Choose age</item>
+        <item>0-15</item>
+        <item>16-30</item>
+        <item>31-45</item>
+        <item>46-60</item>
+        <item>Over 60</item>
+    </string-array>
+    <string-array name="spin_status_maps">
+        <item>Status?</item>
+        <item>Clean</item>
+        <item>Infected</item>
+        <item>Dead</item>
+    </string-array>
 </resources>
