@@ -114,6 +114,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Toast.makeText(MapsActivity.this, R.string.spinner_gender_not_chosen, Toast.LENGTH_LONG).show();
                 }
 
+                String age = spinAge.getSelectedItem().toString();
+                if(age.equals("Choose age") || age.equals("Vælg alder")){
+                    spinAge.requestFocus();
+                    Toast.makeText(MapsActivity.this, R.string.spinner_age_not_chosen, Toast.LENGTH_LONG).show();
+                }
+
+                String otherDiseases = spinOtherdiseases.getSelectedItem().toString();
+                if(otherDiseases.equals("Other diseases?") || otherDiseases.equals("Andre sygdomme?")){
+                    spinOtherdiseases.requestFocus();
+                    Toast.makeText(MapsActivity.this, R.string.spinner_other_diseases_not_chosen, Toast.LENGTH_LONG).show();
+                }
+
+                String healthStatus = spinStatus.getSelectedItem().toString();
+                if(healthStatus.equals("Status?")){
+                    spinStatus.requestFocus();
+                    Toast.makeText(MapsActivity.this, R.string.spinner_status_not_chosen, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
