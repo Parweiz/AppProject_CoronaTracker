@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.appproject_coronatracker.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -105,6 +106,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onClick(View v) {
+
+                // Validate inputs
+                String gender = spinGender.getSelectedItem().toString();
+                if(gender.equals("Choose gender") || gender.equals("Vælg køn")){
+                    spinGender.requestFocus();
+                    Toast.makeText(MapsActivity.this, R.string.spinner_gender_not_chosen, Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -223,5 +231,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         }).check();
+    }
+
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

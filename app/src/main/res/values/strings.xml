@@ -28,4 +28,8 @@
     <string name="question_not_a_user">Not registered? Click here</string>
     <string name="login">Login</string>
     <string name="logging_out_message">Logging out</string>
+    <string name="spinner_gender_not_chosen">Hey! Choose a gender!</string>
+    <string name="spinner_age_not_chosen">Hey! Choose an age!</string>
+    <string name="spinner_other_diseases_not_chosen">Hey! Does the patient have other diseases?</string>
+    <string name="spinner_status_not_chosen">Hey! Choose a status!</string>
 </resources>

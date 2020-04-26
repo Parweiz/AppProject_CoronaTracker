@@ -29,4 +29,7 @@
     <string name="question_not_a_user">Har du ikke en bruger? Tryk her</string>
     <string name="login">Login</string>
     <string name="logging_out_message">Logger ud</string>
-</resources>
+    <string name="spinner_gender_not_chosen">Hey! Vælg et køn!</string>
+    <string name="spinner_age_not_chosen">Hey! Vælg en alder!</string>
+    <string name="spinner_other_diseases_not_chosen">Hey! Har patienten andre sygdomme?</string>
+    <string name="spinner_status_not_chosen">Hey! Vælg en status!</string></resources>
