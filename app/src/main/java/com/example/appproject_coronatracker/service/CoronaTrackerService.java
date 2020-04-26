@@ -27,7 +27,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.activities.LoginActivity;
-import com.example.appproject_coronatracker.activities.MainActivity;
 import com.example.appproject_coronatracker.models.Country;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
