@@ -69,4 +69,11 @@
     <string name="advice5">"Hold afstand - bed andre tage hensyn "</string>
     <string name="totaltests">Antal tests</string>
     <string name="activecases">Aktive cases</string>
+    <string name="notes">Noter:</string>
+    <string name="status">Status:</string>
+    <string name="minebtn">MINE</string>
+    <string name="allbtn">ALLE</string>
+    <string name="gender">Køn:</string>
+    <string name="age">Alder:</string>
+    <string name="otherdiseases">Andre sygdomme:</string>
 </resources>
