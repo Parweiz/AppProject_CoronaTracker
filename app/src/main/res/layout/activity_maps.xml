@@ -11,17 +11,23 @@
         android:id="@+id/tv_notes_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notes:"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="470dp" />
+        android:layout_marginTop="24dp"
+        android:text="@string/notes"
+        app:layout_constraintEnd_toStartOf="@+id/et_notesfield_maps"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_maps" />
 
     <TextView
         android:id="@+id/tv_status_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status:"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="418dp" />
+        android:layout_marginTop="16dp"
+        android:text="@string/status"
+        app:layout_constraintEnd_toStartOf="@+id/spin_status_maps"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_otherdiseases_maps" />
 
     <Button
         android:id="@+id/btn_back_maps"
@@ -29,12 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
         android:onClick="backBtn"
         android:text="@string/back"
-
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_add_maps"
@@ -42,12 +48,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
+
         android:onClick="backBtn"
         android:text="@string/add"
-
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="667dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_back_maps" />
 
     <Button
         android:id="@+id/btn_mine_maps"
@@ -55,12 +63,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-        android:onClick="backBtn"
-        android:text="MINE"
 
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="667dp" />
+        android:onClick="backBtn"
+        android:text="@string/minebtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_maps" />
 
     <Button
         android:id="@+id/btn_all_maps"
@@ -68,88 +78,108 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-        android:onClick="backBtn"
-        android:text="ALL"
 
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="667dp" />
+        android:onClick="backBtn"
+        android:text="@string/allbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_mine_maps" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapview_maps"
-        android:layout_width="397dp"
-        android:layout_height="268dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp" />
+        android:layout_width="382dp"
+        android:layout_height="273dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_gender_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gender:"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="307dp" />
+        android:layout_marginTop="28dp"
+        android:text="@string/gender"
+        app:layout_constraintEnd_toStartOf="@+id/spin_gender_maps"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapview_maps" />
 
     <TextView
         android:id="@+id/tv_age_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484"
-        tools:layout_editor_absoluteX="11dp" />
+        android:layout_marginTop="16dp"
+        android:text="@string/age"
+        app:layout_constraintEnd_toStartOf="@+id/spin_age_maps"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gender_maps" />
 
     <TextView
         android:id="@+id/tv_otherdiseases_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Other diseases:"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="381dp" />
+        android:layout_marginTop="20dp"
+        android:text="@string/otherdiseases"
+        app:layout_constraintEnd_toStartOf="@+id/spin_otherdiseases_maps"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_maps" />
 
-    <TextView
-        android:id="@+id/tv_notes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="403dp" />
 
     <Spinner
         android:id="@+id/spin_gender_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="307dp" />
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapview_maps" />
 
     <Spinner
         android:id="@+id/spin_age_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="345dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_gender_maps" />
 
     <Spinner
         android:id="@+id/spin_otherdiseases_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="381dp" />
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_age_maps" />
 
     <Spinner
         android:id="@+id/spin_status_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="418dp" />
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_otherdiseases_maps" />
 
     <EditText
         android:id="@+id/et_notesfield_maps"
         android:layout_width="256dp"
         android:layout_height="181dp"
+        android:layout_marginTop="28dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="470dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spin_status_maps" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

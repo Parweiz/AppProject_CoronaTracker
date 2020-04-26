@@ -126,7 +126,7 @@ public class CoronaTrackerService extends Service {
 
             }
             // Sleep time for 2 mins
-            recursiveSleepWork(120000L);
+            recursiveSleepWork(10000L);
 
         } else {
             Log.d(TAG, "Background service already started!");
@@ -234,7 +234,7 @@ public class CoronaTrackerService extends Service {
                     if (mStringArrayList.size() > 0) {
                        getRandomAdvice(mStringArrayList);
                     }
-                    Log.d(TAG, "Task completed - Will now sleep for 1 min");
+                    Log.d(TAG, "Task completed - Will now sleep for 2 mins");
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -303,6 +303,7 @@ public class CoronaTrackerService extends Service {
     }
 
     private void getRandomAdvice(List<String> list) {
+
         int index = random.nextInt(list.size());
         Log.d(TAG, "index: " + index + ", advice: " + list.get(index));
 

@@ -10,38 +10,37 @@
 
     <EditText
         android:id="@+id/et_email_signup"
-        android:layout_width="242dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="61dp"
-        android:inputType="textEmailAddress"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="92dp"
         android:hint="@string/enter_email"
-        app:layout_constraintBottom_toTopOf="@+id/et_password_signup"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_repassword_signup"
-        android:layout_width="245dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="51dp"
-        android:inputType="textPassword"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="68dp"
         android:hint="@string/reenter_password"
-        app:layout_constraintBottom_toTopOf="@+id/btn_signup_signup"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
 
     <EditText
         android:id="@+id/et_password_signup"
-        android:layout_width="243dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
-        android:inputType="textPassword"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="76dp"
         android:hint="@string/enter_password"
-        app:layout_constraintBottom_toTopOf="@+id/et_repassword_signup"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
 
@@ -49,24 +48,25 @@
         android:id="@+id/btn_signup_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="51dp"
-        android:text="@string/signup_btn"
+        android:layout_marginTop="36dp"
         android:background="@color/colorBtn"
-        app:layout_constraintBottom_toTopOf="@+id/tv_alreadyuser_signup"
+        android:text="@string/signup_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_repassword_signup" />
 
     <TextView
         android:id="@+id/tv_alreadyuser_signup"
-        android:layout_width="236dp"
-        android:layout_height="0dp"
+        android:layout_width="273dp"
+        android:layout_height="104dp"
         android:layout_marginBottom="96dp"
         android:gravity="center"
         android:text="@string/question_already_user"
         android:textColor="#080808"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

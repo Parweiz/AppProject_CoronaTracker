@@ -82,4 +82,12 @@
     <string name="advice3">Limit physical contact – avoid handshakes, refuse kisses on the cheek and avoid hugging</string>
     <string name="advice4">Be diligent with cleaning – both at home and in your workplace</string>
     <string name="advice5">Keep your distance and ask others to be considerate</string>
+    <string name="notes">Notes:</string>
+    <string name="status">Status:</string>
+    <string name="minebtn">MINE</string>
+    <string name="allbtn">ALL</string>
+    <string name="gender">Gender:</string>
+    <string name="age">Age:</string>
+    <string name="otherdiseases">Other diseases:</string>
+
 </resources>
