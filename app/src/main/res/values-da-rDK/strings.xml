@@ -47,6 +47,12 @@
         <item>Smittet</item>
         <item>Død</item>
     </string-array>
+    <string-array name="spin_gender_maps">
+        <item>Vælg køn</item>
+        <item>Han</item>
+        <item>Hun</item>
+<!--        <item>Hen</item>-->
+    </string-array>
     <string name="flag">Flag</string>
     <string name="country">Land</string>
     <string name="totalcases">Antal cases:</string>

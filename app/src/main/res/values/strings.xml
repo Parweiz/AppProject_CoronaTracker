@@ -46,6 +46,17 @@
         <item>Infected</item>
         <item>Dead</item>
     </string-array>
+    <string-array name="spin_gender_maps">
+        <item>Choose gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="spin_otherdiseases_maps">
+        <item>Other diseases?</item>
+        <item>Yes</item>
+        <item>No</item>
+        <item>Unknown</item>
+    </string-array>
     <string name="flag">Flag</string>
     <string name="country">Country</string>
     <string name="totalcases">Total Cases: </string>
