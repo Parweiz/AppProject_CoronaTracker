@@ -6,7 +6,7 @@
     <string name="add">Tilføj</string>
     <string name="getall">Hent alle</string>
     <string name="back">Tilbage</string>
-    <string name="notificationtitle">CoronaTracker title </string>
+    <string name="notificationtitle">CoronaTracker </string>
     <string name="notificationtext">CoronaTracker text </string>
     <string name="welcome_login">Velkommen</string>
     <string name="error_form_field_must_be_filled">Feltet må ikke være tomt</string>
@@ -47,4 +47,20 @@
         <item>Smittet</item>
         <item>Død</item>
     </string-array>
+    <string name="flag">Flag</string>
+    <string name="country">Land</string>
+    <string name="totalcases">Antal cases:</string>
+    <string name="todayscount">Nye cases:</string>
+    <string name="data0">0.0</string>
+    <string name="moreinfo">For mere information, \\nså tryk venligst på elementet</string>
+    <string name="totalcritical">I kritiske tilstand:</string>
+    <string name="totaldeath">Antal døde:</string>
+    <string name="totalrecovered">Antal raskmeldte:</string>
+    <string name="advice1">Vask dine hænder tit eller brug håndsprit</string>
+    <string name="advice2">Host eller nys i dit ærme – ikke dine hænder</string>
+    <string name="advice3">Undgå håndtryk, kindkys og kram – begræns den fysiske kontakt</string>
+    <string name="advice4">Vær opmærksom på rengøring – både hjemme og på arbejdspladsen</string>
+    <string name="advice5">"Hold afstand - bed andre tage hensyn "</string>
+    <string name="totaltests">Antal tests</string>
+    <string name="activecases">Aktive cases</string>
 </resources>

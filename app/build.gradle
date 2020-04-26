@@ -54,4 +54,9 @@ dependencies {
     implementation 'com.google.gms:google-services:3.0.0'
     implementation 'com.karumi:dexter:5.0.0'
 
+    // Recyclerview
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // LocalBroadcastManager
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

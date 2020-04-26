@@ -1,22 +1,22 @@
 <resources>
     <string name="app_name">AppProject - CoronaTracker</string>
-    <string name="service" translatable="false">A started service that runs in the background</string>
+    <string name="service">A started service that runs in the background</string>
     <string name="exit">Exit</string>
     <string name="add">Add</string>
     <string name="getall">Get All</string>
     <string name="back">Back</string>
-    <string name="notificationtitle">CoronaTracker title </string>
+    <string name="notificationtitle">CoronaTracker Reminder</string>
     <string name="notificationtext">CoronaTracker text </string>
+    <string name="pickoption">Please choose an option</string>
+    <string name="maps">Maps</string>
+    <string name="tracker">Tracker</string>
+    <string name="logout">Log Out</string>
     <string name="welcome_login">Welcome</string>
     <string name="error_form_field_must_be_filled">Field must not be empty</string>
     <string name="error_invalid_email">E-mail invalid</string>
     <string name="msg_valid_password">Password valid</string>
     <string name="msg_invalid_password">Password invalid! 4–8 character password requiring numbers and alphabets of both cases</string>
     <string name="error_user_already_exists">User already exists!</string>
-    <string name="pickoption">Please choose an option</string>
-    <string name="maps">Maps</string>
-    <string name="tracker">Tracker</string>
-    <string name="logout">Log Out</string>
     <string name="passwords_not_matching">"Your passwords don't match. Try again"</string>
     <string name="you_have_completed_signup">"Congratulations, you are now signed up </string>
     <string name="user_already_signed_in">User is already signed in - going directly to MenuActivity</string>
@@ -46,4 +46,29 @@
         <item>Infected</item>
         <item>Dead</item>
     </string-array>
+    <string name="flag">Flag</string>
+    <string name="country">Country</string>
+    <string name="totalcases">Total Cases: </string>
+    <string name="todayscount">New Cases:</string>
+    <string name="totalcritical">Total Critical: </string>
+    <string name="totaldeath">Total Death: </string>
+    <string name="totalrecovered">Total Recovered: </string>
+    <string name="activecases">Active cases: </string>
+    <string name="totaltests">Total tests: </string>
+    <string name="data0">0.0</string>
+    <string name="moreinfo">For more information, \nplease press on the item</string>
+    <string name="key_flag" translatable="false">flag</string>
+    <string name="key_country" translatable="false">country</string>
+    <string name="key_totalcases" translatable="false">totalcases</string>
+    <string name="key_todayscases" translatable="false">Today\'s cases</string>
+    <string name="key_totaldeaths" translatable="false">totaldeath</string>
+    <string name="key_totalrecovered" translatable="false">totalrecovered</string>
+    <string name="key_totalcritical" translatable="false">totalcritical</string>
+    <string name="key_activecases" translatable="false">activecases</string>
+    <string name="key_totaltests" translatable="false">totaltests</string>
+    <string name="advice1">Wash your hands frequently or sanitize your hands with an alcohol-based hand rub</string>
+    <string name="advice2">Cough or sneeze into your sleeve - not your hands</string>
+    <string name="advice3">Limit physical contact – avoid handshakes, refuse kisses on the cheek and avoid hugging</string>
+    <string name="advice4">Be diligent with cleaning – both at home and in your workplace</string>
+    <string name="advice5">Keep your distance and ask others to be considerate</string>
 </resources>
