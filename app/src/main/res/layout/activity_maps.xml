@@ -7,95 +7,24 @@
     android:background="@color/colorBackground"
     tools:context=".activities.MapsActivity">
 
-    <TextView
-        android:id="@+id/tv_notes_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/notes"
-        app:layout_constraintEnd_toStartOf="@+id/et_notesfield_maps"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_status_maps" />
-
-    <TextView
-        android:id="@+id/tv_status_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/status"
-        app:layout_constraintEnd_toStartOf="@+id/spin_status_maps"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_otherdiseases_maps" />
-
-    <Button
-        android:id="@+id/btn_back_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:background="@color/colorBtn"
-        android:onClick="backBtn"
-        android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_add_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="40dp"
-        android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
-        android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_back_maps" />
-
-    <Button
-        android:id="@+id/btn_mine_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="40dp"
-        android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
-        android:text="@string/minebtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_add_maps" />
-
-    <Button
-        android:id="@+id/btn_all_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="40dp"
-        android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
-        android:text="@string/allbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_mine_maps" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapview_maps"
-        android:layout_width="382dp"
-        android:layout_height="273dp"
+        android:layout_width="372dp"
+        android:layout_height="341dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewBetweenMapsAndText"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapview_maps" />
 
     <TextView
         android:id="@+id/tv_gender_maps"
@@ -106,7 +35,17 @@
         app:layout_constraintEnd_toStartOf="@+id/spin_gender_maps"
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapview_maps" />
+        app:layout_constraintTop_toBottomOf="@+id/viewBetweenMapsAndText" />
+
+    <Spinner
+        android:id="@+id/spin_gender_maps"
+        android:layout_width="259dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewBetweenMapsAndText" />
 
     <TextView
         android:id="@+id/tv_age_maps"
@@ -119,28 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_gender_maps" />
 
-    <TextView
-        android:id="@+id/tv_otherdiseases_maps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/otherdiseases"
-        app:layout_constraintEnd_toStartOf="@+id/spin_otherdiseases_maps"
-        app:layout_constraintHorizontal_bias="0.277"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_age_maps" />
-
-
-    <Spinner
-        android:id="@+id/spin_gender_maps"
-        android:layout_width="259dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapview_maps" />
-
     <Spinner
         android:id="@+id/spin_age_maps"
         android:layout_width="259dp"
@@ -150,6 +67,17 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_gender_maps" />
+
+    <TextView
+        android:id="@+id/tv_otherdiseases_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/otherdiseases"
+        app:layout_constraintEnd_toStartOf="@+id/spin_otherdiseases_maps"
+        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_maps" />
 
     <Spinner
         android:id="@+id/spin_otherdiseases_maps"
@@ -161,6 +89,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_age_maps" />
 
+    <TextView
+        android:id="@+id/tv_status_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/status"
+        app:layout_constraintEnd_toStartOf="@+id/spin_status_maps"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_otherdiseases_maps" />
+
     <Spinner
         android:id="@+id/spin_status_maps"
         android:layout_width="259dp"
@@ -171,15 +110,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_otherdiseases_maps" />
 
+    <TextView
+        android:id="@+id/tv_notes_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/notes"
+        app:layout_constraintEnd_toStartOf="@+id/et_notesfield_maps"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status_maps" />
+
     <EditText
         android:id="@+id/et_notesfield_maps"
-        android:layout_width="256dp"
-        android:layout_height="181dp"
+        android:layout_width="258dp"
+        android:layout_height="53dp"
         android:layout_marginTop="28dp"
-        android:text="TextView"
+        android:hint="@string/user_s_notes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_status_maps" />
+
+
+    <Button
+        android:id="@+id/btn_back_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_add_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_back_maps" />
+
+    <Button
+        android:id="@+id/btn_mine_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="@string/minebtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_maps" />
+
+    <Button
+        android:id="@+id/btn_all_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorBtn"
+        android:onClick="backBtn"
+        android:text="@string/allbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_mine_maps" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

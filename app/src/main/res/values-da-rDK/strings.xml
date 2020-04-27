@@ -51,7 +51,7 @@
         <item>Vælg køn</item>
         <item>Han</item>
         <item>Hun</item>
-<!--        <item>Hen</item>-->
+        <!--        <item>Hen</item>-->
     </string-array>
     <string name="flag">Flag</string>
     <string name="country">Land</string>
@@ -76,4 +76,5 @@
     <string name="gender">Køn:</string>
     <string name="age">Alder:</string>
     <string name="otherdiseases">Andre sygdomme:</string>
+    <string name="user_s_notes">Brugerens notater</string>
 </resources>

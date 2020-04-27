@@ -12,7 +12,7 @@
         android:id="@+id/et_email_signup"
         android:layout_width="255dp"
         android:layout_height="63dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="88dp"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
