@@ -58,27 +58,9 @@ public class Country {
     public Country() {
     }
 
-    /**
-     *
-     * @param continent
-     * @param country
-     * @param cases
-     * @param critical
-     * @param active
-     * @param testsPerOneMillion
-     * @param recovered
-     * @param tests
-     * @param deathsPerOneMillion
-     * @param casesPerOneMillion
-     * @param countryInfo
-     * @param updated
-     * @param deaths
-     * @param todayCases
-     * @param todayDeaths
-     */
-    public Country(Double updated, String country, CountryInfo countryInfo, Integer cases, Integer todayCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer active, Integer critical, Integer casesPerOneMillion, Integer deathsPerOneMillion, Integer tests, Integer testsPerOneMillion, String continent) {
+
+    public Country(String country, CountryInfo countryInfo, Integer cases, Integer todayCases, Integer deaths, Integer todayDeaths, Integer recovered, Integer active, Integer critical, Integer tests) {
         super();
-        this.updated = updated;
         this.country = country;
         this.countryInfo = countryInfo;
         this.cases = cases;
@@ -88,11 +70,7 @@ public class Country {
         this.recovered = recovered;
         this.active = active;
         this.critical = critical;
-        this.casesPerOneMillion = casesPerOneMillion;
-        this.deathsPerOneMillion = deathsPerOneMillion;
         this.tests = tests;
-        this.testsPerOneMillion = testsPerOneMillion;
-        this.continent = continent;
     }
 
     public Double getUpdated() {

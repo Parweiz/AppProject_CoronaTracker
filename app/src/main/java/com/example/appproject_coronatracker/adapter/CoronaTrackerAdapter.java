@@ -15,12 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.models.Country;
+import com.example.appproject_coronatracker.models.CountryParcelable;
 
 import java.util.ArrayList;
 
 public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdapter.WordViewHolder> {
 
-    private ArrayList<Country> mCountryArrayList;
+    private ArrayList<CountryParcelable> mCountryArrayList;
     private OnItemListener mOnItemListener;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
@@ -45,7 +46,7 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         }
     }
 
-    public CoronaTrackerAdapter(ArrayList<Country> countries, OnItemListener onItemListener) {
+    public CoronaTrackerAdapter(ArrayList<CountryParcelable> countries, OnItemListener onItemListener) {
         this.mCountryArrayList = countries;
         this.mOnItemListener = onItemListener;
     }
@@ -79,7 +80,7 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         void onItemClick(int position);
     }
 
-    public void updateData(ArrayList<Country> newList) {
+    public void updateData(ArrayList<CountryParcelable> newList) {
         mCountryArrayList = newList;
         notifyDataSetChanged();
     }

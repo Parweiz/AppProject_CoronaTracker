@@ -10,6 +10,69 @@
 
     <ImageView
         android:id="@+id/mDetailsFlag"
+        android:layout_width="310dp"
+        android:layout_height="294dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/mDetailsCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/country"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/view4"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsFlag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:text="@string/totalcases"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toStartOf="@+id/mDetailsTotalCasesText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsCountry"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalCasesText"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/data0"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsCountry"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mDetailsFlag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <!--<ImageView
+        android:id="@+id/mDetailsFlag"
         android:layout_width="719dp"
         android:layout_height="248dp"
         android:contentDescription="@string/flag"
@@ -269,7 +332,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.378"
         app:layout_constraintStart_toEndOf="@+id/horizonalView"
-        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalTests" />
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalTests" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.appproject_coronatracker.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import android.widget.SearchView;
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.adapter.CoronaTrackerAdapter;
 import com.example.appproject_coronatracker.models.Country;
+import com.example.appproject_coronatracker.models.CountryParcelable;
 import com.example.appproject_coronatracker.service.CoronaTrackerService;
 
 import java.util.ArrayList;
@@ -36,7 +38,7 @@ import static com.example.appproject_coronatracker.service.CoronaTrackerService.
 public class TrackerActivity extends AppCompatActivity implements CoronaTrackerAdapter.OnItemListener {
 
     private int wordClickedIndex;
-    private ArrayList<Country> mCountryArrayList = new ArrayList<>();
+    private ArrayList<CountryParcelable> mCountryArrayList = new ArrayList<>();
     private CoronaTrackerAdapter mAdapter;
     public static final String TAG = "coronatrackerservice";
     private RecyclerView mRecyclerView;
@@ -50,6 +52,12 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
+
+        if(savedInstanceState != null) {
+            mCountryArrayList = savedInstanceState.getParcelableArrayList(getString(R.string.key_orientationchange));
+        }  else {
+            mCountryArrayList = new ArrayList<>();
+        }
 
         setUpRecyclerView();
         boundServiceSetupFunction();
@@ -98,9 +106,9 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     }
 
     private void filter(String text) {
-        ArrayList<Country> filteredList = new ArrayList<>();
+        ArrayList<CountryParcelable> filteredList = new ArrayList<>();
 
-        for (Country item : mCountryArrayList) {
+        for (CountryParcelable item : mCountryArrayList) {
             if (item.getCountry().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(item);
             }
@@ -167,7 +175,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         public void onReceive(Context context, Intent intent) {
 
             Bundle bundle = intent.getBundleExtra("Bundle");
-            mCountryArrayList = (ArrayList<Country>) bundle.getSerializable(ARRAY_LIST);
+            mCountryArrayList = (ArrayList<CountryParcelable>) bundle.getSerializable(ARRAY_LIST);
 
             Log.d(TAG, "onReceive: " + mCountryArrayList.get(0).getCountry());
 
@@ -180,7 +188,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(this, DetailsActivity.class);
-        Country clickedCountry = mCountryArrayList.get(position);
+        CountryParcelable clickedCountry = mCountryArrayList.get(position);
         wordClickedIndex = position;
 
         intent.putExtra(getString(R.string.key_flag), clickedCountry.getCountryInfo().getFlag());
@@ -194,5 +202,12 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         intent.putExtra(getString(R.string.key_totaltests), clickedCountry.getTests());
 
         startActivity(intent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelableArrayList(getString(R.string.key_orientationchange), mCountryArrayList);
+
+        super.onSaveInstanceState(outState);
     }
 }
