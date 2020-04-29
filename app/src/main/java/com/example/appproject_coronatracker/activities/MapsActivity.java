@@ -13,7 +13,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.PermissionRequest;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,6 +31,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -74,6 +78,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     float mapZoomLevel = 16;
     boolean cameraSet = false;
     private FusedLocationProviderClient mFusedLocationClient;
+    private BitmapDescriptor markerColor;
 
     // To get users current location
     LocationManager locationManager;
@@ -226,9 +231,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                                         LatLng latLng = new LatLng(geo.getLatitude(), geo.getLongitude());
 
-                                        gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age))
+                                        // set marker color according to the status
+                                        if(status.equals("Clean") || status.equals("Rask")){
+                                            markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+                                        } else if(status.equals("Infected") || status.equals("Smittet")){
+                                            markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+                                        } else if(status.equals("Dead") || status.equals("Død")) {
+                                            markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+                                        }
+                                        gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age).icon(markerColor))
                                                 .setDraggable(true);
-                                    }
+                                        }
                                 }else {
                                     // TODO: handle error here
                                 }
@@ -390,5 +403,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }
