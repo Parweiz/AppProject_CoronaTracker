@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -46,7 +47,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 // reference for Google Maps, User location: https://www.youtube.com/watch?v=pNeuuImirHY
 // reference for getting all markers shown: https://stackoverflow.com/questions/56837831/marker-from-firestore-map-data-type
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     // Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -172,7 +173,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+
+                // Below is spinner-related
+        ArrayAdapter<CharSequence> spinAgeAdapter = ArrayAdapter.createFromResource(this, R.array.spin_age_maps, android.R.layout.simple_spinner_item);
+        spinAgeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinAge.setAdapter(spinAgeAdapter);
+        spinAge.setOnItemSelectedListener(MapsActivity.this);
+
+        ArrayAdapter<CharSequence> spinOtherDiseases = ArrayAdapter.createFromResource(this, R.array.spin_otherdiseases_maps, android.R.layout.simple_spinner_item);
+        spinOtherDiseases.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinOtherdiseases.setAdapter(spinOtherDiseases);
+        spinOtherdiseases.setOnItemSelectedListener(MapsActivity.this);
+
+        ArrayAdapter<CharSequence> spinGenderAdapter = ArrayAdapter.createFromResource(this, R.array.spin_gender_maps, android.R.layout.simple_spinner_item);
+        spinGenderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinGender.setAdapter(spinGenderAdapter);
+        spinGender.setOnItemSelectedListener(MapsActivity.this);
+
+        ArrayAdapter<CharSequence> spinStatusAdapter = ArrayAdapter.createFromResource(this, R.array.spin_status_maps, android.R.layout.simple_spinner_item);
+        spinStatusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinStatus.setAdapter(spinStatusAdapter);
+        spinStatus.setOnItemSelectedListener(MapsActivity.this);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    }
+
+    public void onNothingSelected(AdapterView<?> arg0) {}
+
 
     private void clearFields() {
         spinAge.setSelection(0);
