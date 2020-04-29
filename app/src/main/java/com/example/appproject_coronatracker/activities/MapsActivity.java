@@ -110,6 +110,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         spinOtherdiseases = findViewById(R.id.spin_otherdiseases_maps);
         spinStatus = findViewById(R.id.spin_status_maps);
 
+        initializeSpinnerLogic();
+
+        initializeButtonLogic();
+
+    }
+
+    private void initializeButtonLogic() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -174,10 +181,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
-
-        initializeSpinnerLogic();
-
-
     }
 
     // Sets up spinners logic, when pressed.
