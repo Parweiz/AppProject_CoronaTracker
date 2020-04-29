@@ -53,6 +53,12 @@
         <item>Hun</item>
 <!--        <item>Hen</item>-->
     </string-array>
+    <string-array name="spin_otherdiseases_maps">
+        <item>Andre sygdomme?</item>
+        <item>Ja</item>
+        <item>Nej</item>
+        <item>Ukendt</item>
+    </string-array>
     <string name="flag">Flag</string>
     <string name="country">Land</string>
     <string name="totalcases">Antal cases:</string>
@@ -76,4 +82,5 @@
     <string name="gender">Køn:</string>
     <string name="age">Alder:</string>
     <string name="otherdiseases">Andre sygdomme:</string>
+    <string name="et_please_insert_notes">Skriv her </string>
 </resources>
