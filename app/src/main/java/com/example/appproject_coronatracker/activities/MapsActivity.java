@@ -63,6 +63,7 @@ import java.util.Map;
 // reference for Google Maps + API: https://developers.google.com/maps/documentation/android-sdk/get-api-key
 // reference for Google Maps, User location: https://www.youtube.com/watch?v=pNeuuImirHY
 // reference for getting all markers shown: https://stackoverflow.com/questions/56837831/marker-from-firestore-map-data-type
+// reference marker color https://developers.google.com/maps/documentation/android-sdk/marker
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
@@ -231,7 +232,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                                         LatLng latLng = new LatLng(geo.getLatitude(), geo.getLongitude());
 
-                                        // set marker color according to the status
+                                        // set marker color according to the status // TODO: this is really ugly code.. refactor!
                                         if(status.equals("Clean") || status.equals("Rask")){
                                             markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
                                         } else if(status.equals("Infected") || status.equals("Smittet")){
