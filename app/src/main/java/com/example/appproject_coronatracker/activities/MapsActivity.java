@@ -43,6 +43,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 // reference: https://firebase.google.com/docs/auth/web/manage-users
 // reference: spinner: https://www.youtube.com/watch?v=on_OrrX7Nw4
+// reference: spinner: https://developer.android.com/guide/topics/ui/controls/spinner
 // reference for Google Maps + API: https://developers.google.com/maps/documentation/android-sdk/get-api-key
 // reference for Google Maps, User location: https://www.youtube.com/watch?v=pNeuuImirHY
 // reference for getting all markers shown: https://stackoverflow.com/questions/56837831/marker-from-firestore-map-data-type
@@ -174,7 +175,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-                // Below is spinner-related
+        initializeSpinnerLogic();
+
+
+    }
+
+    // Sets up spinners logic, when pressed.
+    private void initializeSpinnerLogic() {
         ArrayAdapter<CharSequence> spinAgeAdapter = ArrayAdapter.createFromResource(this, R.array.spin_age_maps, android.R.layout.simple_spinner_item);
         spinAgeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinAge.setAdapter(spinAgeAdapter);
@@ -196,6 +203,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         spinStatus.setOnItemSelectedListener(MapsActivity.this);
     }
 
+    // Required in regards to use of spinners
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
     }
