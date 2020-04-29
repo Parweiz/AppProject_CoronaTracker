@@ -139,24 +139,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if(gender.equals("Choose gender") || gender.equals("Vælg køn")){
                     spinGender.requestFocus();
                     Toast.makeText(MapsActivity.this, R.string.spinner_gender_not_chosen, Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 String age = spinAge.getSelectedItem().toString();
                 if(age.equals("Choose age") || age.equals("Vælg alder")){
                     spinAge.requestFocus();
                     Toast.makeText(MapsActivity.this, R.string.spinner_age_not_chosen, Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 String otherDiseases = spinOtherdiseases.getSelectedItem().toString();
                 if(otherDiseases.equals("Other diseases?") || otherDiseases.equals("Andre sygdomme?")){
                     spinOtherdiseases.requestFocus();
                     Toast.makeText(MapsActivity.this, R.string.spinner_other_diseases_not_chosen, Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 String healthStatus = spinStatus.getSelectedItem().toString();
                 if(healthStatus.equals("Status?")){
                     spinStatus.requestFocus();
                     Toast.makeText(MapsActivity.this, R.string.spinner_status_not_chosen, Toast.LENGTH_LONG).show();
+                    return;
                 }
 
                 String notes = etNotesField.getText().toString();
