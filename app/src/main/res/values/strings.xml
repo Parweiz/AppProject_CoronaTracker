@@ -90,5 +90,6 @@
     <string name="age">Age:</string>
     <string name="otherdiseases">Other diseases:</string>
     <string name="et_please_insert_notes">Write here</string>
+    <string name="no_markers_registered_yet">No markers saved yet</string>
 
 </resources>

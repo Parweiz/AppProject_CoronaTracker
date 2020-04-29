@@ -83,4 +83,5 @@
     <string name="age">Alder:</string>
     <string name="otherdiseases">Andre sygdomme:</string>
     <string name="et_please_insert_notes">Skriv her </string>
+    <string name="no_markers_registered_yet">Ingen markeringer gemt endnu</string>
 </resources>

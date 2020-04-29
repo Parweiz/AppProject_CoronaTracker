@@ -257,7 +257,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
     }
@@ -319,6 +318,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLong, mapZoomLevel));
                     cameraSet = true;
                 }
+
+                // work in progress...
+//                gMap.setOnInfoWindowLongClickListener(new GoogleMap.OnInfoWindowLongClickListener() {
+//                    @Override
+//                    public void onInfoWindowLongClick(Marker marker) {
+//                        String markerId = marker.;
+//                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                        db.collection("maps_corona_data").document(markerId).delete();
+//                        marker.remove();
+//                        Toast.makeText(MapsActivity.this, "Removed marker!", Toast.LENGTH_LONG).show();
+//                    }
+//                });
             }
 
             @Override
@@ -335,6 +346,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onProviderDisabled(String provider) {
 
             }
+
+
         };
 
         // Asking for permission..

@@ -37,7 +37,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-        android:onClick="backBtn"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,8 +50,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
         android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_back_maps" />
@@ -66,8 +63,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
         android:text="@string/minebtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_add_maps" />
@@ -81,8 +76,6 @@
         android:layout_marginStart="12dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorBtn"
-
-        android:onClick="backBtn"
         android:text="@string/allbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
