@@ -157,6 +157,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 String notes = etNotesField.getText().toString();
 
+                // probably redundant...
                 double latitude = userLatLong.latitude;
                 double longitude = userLatLong.longitude;
 
@@ -173,6 +174,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 newCase.put("OtherDiseases", otherDiseases);
                 newCase.put("Status", healthStatus);
                 newCase.put("Notes", notes);
+                newCase.put("Geopoint", geoPoint);
+
 
                 db.collection("maps_corona_data")
                         .add(newCase)
