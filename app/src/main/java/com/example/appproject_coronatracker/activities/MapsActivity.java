@@ -32,13 +32,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.common.collect.Maps;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -126,7 +131,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void initializeButtonLogic() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
@@ -157,16 +161,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 String notes = etNotesField.getText().toString();
 
-                // probably redundant...
-                double latitude = userLatLong.latitude;
-                double longitude = userLatLong.longitude;
-
                 // fetch current position
                 GeoPoint geoPoint = new GeoPoint(userLatLong.latitude, userLatLong. longitude);
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                // TODO: Find out what collection, we use in firebase.
 
                 Map<String, Object> newCase = new HashMap();
                 newCase.put("Gender", gender);
@@ -175,7 +173,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 newCase.put("Status", healthStatus);
                 newCase.put("Notes", notes);
                 newCase.put("Geopoint", geoPoint);
-
 
                 db.collection("maps_corona_data")
                         .add(newCase)
@@ -197,7 +194,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 clearFields();
@@ -206,15 +202,41 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         btnMine.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("maps_corona_data")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if(task.isSuccessful()){
+                                    for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
+                                        HashMap hashMap = (HashMap) documentSnapshot.getData();
+                                        String gender = (String) hashMap.get("Gender");
+                                        String age = (String) hashMap.get("Age");
+                                        String otherDiseases = (String) hashMap.get("OtherDiseases");
+                                        String status = (String) hashMap.get("Status");
+                                        String notes = (String) hashMap.get("Notes");
+                                        GeoPoint geo = (GeoPoint) hashMap.get("Geopoint");
 
+                                        LatLng latLng = new LatLng(geo.getLatitude(), geo.getLongitude());
+
+                                        gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age))
+                                                .setDraggable(true);
+                                    }
+                                }else {
+                                    // TODO: handle error here
+                                }
+                                if (task.getResult().isEmpty()) {
+                                    Toast.makeText(MapsActivity.this, R.string.no_markers_registered_yet, Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
             }
         });
 
         btnAll.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
