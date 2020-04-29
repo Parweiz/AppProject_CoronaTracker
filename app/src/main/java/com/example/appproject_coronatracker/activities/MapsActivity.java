@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.AdapterView;
@@ -31,8 +32,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.karumi.dexter.Dexter;
@@ -40,6 +44,9 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 // reference: https://firebase.google.com/docs/auth/web/manage-users
 // reference: spinner: https://www.youtube.com/watch?v=on_OrrX7Nw4
@@ -50,6 +57,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
+    private static final String TAG = MapsActivity.class.getSimpleName();
     // Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
@@ -147,6 +155,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Toast.makeText(MapsActivity.this, R.string.spinner_status_not_chosen, Toast.LENGTH_LONG).show();
                 }
 
+                String notes = etNotesField.getText().toString();
+
+                double latitude = userLatLong.latitude;
+                double longitude = userLatLong.longitude;
+
                 // fetch current position
                 GeoPoint geoPoint = new GeoPoint(userLatLong.latitude, userLatLong. longitude);
 
@@ -154,6 +167,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 // TODO: Find out what collection, we use in firebase.
 
+                Map<String, Object> newCase = new HashMap();
+                newCase.put("Gender", gender);
+                newCase.put("Age", age);
+                newCase.put("OtherDiseases", otherDiseases);
+                newCase.put("Status", healthStatus);
+                newCase.put("Notes", notes);
+
+                db.collection("maps_corona_data")
+                        .add(newCase)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "Added data with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "Failed adding spot", e);
+                            }
+                        });
+                Toast.makeText(MapsActivity.this, "Data added!", Toast.LENGTH_LONG).show();
+                clearFields();
             }
         });
 
