@@ -220,11 +220,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         gMap.clear();
     }
 
-    public void backBtn (View v) {
-        setResult(RESULT_CANCELED);
-        finish();
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         MapsActivity.this.gMap = googleMap;
