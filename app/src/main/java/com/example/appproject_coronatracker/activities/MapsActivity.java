@@ -3,6 +3,8 @@ package com.example.appproject_coronatracker.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
@@ -43,11 +45,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.common.collect.Maps;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.Document;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -57,6 +62,8 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.google.firebase.firestore.FieldValue.delete;
+
 // reference: https://firebase.google.com/docs/auth/web/manage-users
 // reference: spinner: https://www.youtube.com/watch?v=on_OrrX7Nw4
 // reference: spinner: https://developer.android.com/guide/topics/ui/controls/spinner
@@ -65,7 +72,7 @@ import java.util.Map;
 // reference for getting all markers shown: https://stackoverflow.com/questions/56837831/marker-from-firestore-map-data-type
 // reference marker color https://developers.google.com/maps/documentation/android-sdk/marker
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = MapsActivity.class.getSimpleName();
     // Firebase
@@ -211,7 +218,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        btnMine.setOnClickListener(new View.OnClickListener() {
+        btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -240,8 +247,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                         } else if(status.equals("Dead") || status.equals("Død")) {
                                             markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
                                         }
-                                        gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age).icon(markerColor))
-                                                .setDraggable(true);
+                                        Marker mark =  gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age).icon(markerColor));
+//                                                .setDraggable(true)
+                                        mark.setDraggable(true);
+                                        String docId = documentSnapshot.getId();
+                                        mark.setTag(docId);
                                         }
                                 }else {
                                     // TODO: handle error here
@@ -254,11 +264,58 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        btnAll.setOnClickListener(new View.OnClickListener() {
+        btnMine.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
+                Toast.makeText(MapsActivity.this, "Virker ikke pt.", Toast.LENGTH_LONG).show();
+
             }
         });
+
+        // TODO: FIX! Can't differentiate somehow to only get the documents that are "uploaded" by the currentUser...
+//        btnMine.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//                FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                db.collection("Users").document(currentUser.getUid()).collection("maps_corona_data").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if(task.isSuccessful()){
+//                            for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
+//                                HashMap hashMap = (HashMap) documentSnapshot.getData();
+//                                String gender = (String) hashMap.get("Gender");
+//                                String age = (String) hashMap.get("Age");
+//                                String otherDiseases = (String) hashMap.get("OtherDiseases");
+//                                String status = (String) hashMap.get("Status");
+//                                String notes = (String) hashMap.get("Notes");
+//                                GeoPoint geo = (GeoPoint) hashMap.get("Geopoint");
+//
+//                                LatLng latLng = new LatLng(geo.getLatitude(), geo.getLongitude());
+//
+//                                // set marker color according to the status // TODO: this is really ugly code.. refactor!
+//                                if(status.equals("Clean") || status.equals("Rask")){
+//                                    markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+//                                } else if(status.equals("Infected") || status.equals("Smittet")){
+//                                    markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+//                                } else if(status.equals("Dead") || status.equals("Død")) {
+//                                    markerColor = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+//                                }
+//                                Marker mark =  gMap.addMarker(new MarkerOptions().position(latLng).title(status).snippet("Gender: " + gender + ", " + "Age: " + age).icon(markerColor));
+////                                                .setDraggable(true)
+//                                mark.setDraggable(true);
+//                                mark.setTag(hashMap);
+//                            }
+//                        }else {
+//                            // TODO: handle error here
+//                        }
+//                        if (task.getResult().isEmpty()) {
+//                            Toast.makeText(MapsActivity.this, R.string.no_markers_registered_yet, Toast.LENGTH_LONG).show();
+//                        }                    }
+//                });
+//            }
+//        });
     }
 
     // Sets up spinners logic, when pressed.
@@ -286,11 +343,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     // Required in regards to use of spinners
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    }
-
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
     public void onNothingSelected(AdapterView<?> arg0) {}
-
 
     private void clearFields() {
         spinAge.setSelection(0);
@@ -319,35 +373,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     cameraSet = true;
                 }
 
-                // work in progress...
-//                gMap.setOnInfoWindowLongClickListener(new GoogleMap.OnInfoWindowLongClickListener() {
-//                    @Override
-//                    public void onInfoWindowLongClick(Marker marker) {
-//                        String markerId = marker.;
-//                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                        db.collection("maps_corona_data").document(markerId).delete();
-//                        marker.remove();
-//                        Toast.makeText(MapsActivity.this, "Removed marker!", Toast.LENGTH_LONG).show();
-//                    }
-//                });
+                // work in progress... this should be better.
+                gMap.setOnInfoWindowLongClickListener(new GoogleMap.OnInfoWindowLongClickListener() {
+                    @Override
+                    public void onInfoWindowLongClick(final Marker marker) {
+                        String id = (String) marker.getTag();
+                        db.collection("maps_corona_data").document(id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                marker.remove();
+                                Toast.makeText(MapsActivity.this, "Removed marker!", Toast.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(MapsActivity.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                });
             }
 
             @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
 
             @Override
-            public void onProviderEnabled(String provider) {
-
-            }
+            public void onProviderEnabled(String provider) {}
 
             @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-
-
+            public void onProviderDisabled(String provider) {}
         };
 
         // Asking for permission..
