@@ -67,6 +67,7 @@ public class CoronaTrackerService extends Service {
     private ExecutorService execService;
     private RequestQueue queue;
     private Random random = new Random();
+    private int index, tempResult;
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private DocumentReference notificationsRef = firestore.document("notifications/z9cotEfKEd6epuh71k2n");
@@ -126,8 +127,8 @@ public class CoronaTrackerService extends Service {
 
 
             }
-            // Sleep time for 2 mins
-            recursiveSleepWork(10000L);
+            // Sleep time for 3 mins - Demo purposes
+            recursiveSleepWork(180000L);
 
         } else {
             Log.d(TAG, "Background service already started!");
@@ -233,7 +234,7 @@ public class CoronaTrackerService extends Service {
                     if (mStringArrayList.size() > 0) {
                        getRandomAdvice(mStringArrayList);
                     }
-                    Log.d(TAG, "Task completed - Will now sleep for 2 mins");
+                    Log.d(TAG, "Task completed - Will now sleep for 3 mins");
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -303,7 +304,13 @@ public class CoronaTrackerService extends Service {
 
     private void getRandomAdvice(List<String> list) {
 
-        int index = random.nextInt(list.size());
+        index = random.nextInt(list.size());
+        Log.d(TAG, "getRandomAdvice: " + index);
+        if(index == tempResult) {
+            getRandomAdvice(list);
+        }
+        tempResult = index;
+
         Log.d(TAG, "index: " + index + ", advice: " + list.get(index));
 
         Intent notificationIntent = new Intent(this, LoginActivity.class);

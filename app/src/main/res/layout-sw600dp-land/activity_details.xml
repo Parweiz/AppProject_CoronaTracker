@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".activities.DetailsActivity">
+
+    <ImageView
+        android:id="@+id/mDetailsFlag"
+        android:layout_width="328dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/mDetailsCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/country"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/view4"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsFlag" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/totalcases"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintEnd_toStartOf="@+id/mDetailsTotalCasesText"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsCountry"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalCasesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsCountry"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mDetailsFlag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/mDetailsTodaysCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/todayscount"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toStartOf="@+id/horizonalView2"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mDetailsTodaysCountText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/horizonalView2"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTodaysCount" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalCritical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/totalcritical"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toStartOf="@+id/horizonalView2"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTodaysCountText" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalCriticalText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+
+        app:layout_constraintEnd_toStartOf="@+id/horizonalView2"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalCritical" />
+
+    <TextView
+        android:id="@+id/mDetailsActiveCases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/activecases"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalCriticalText" />
+
+    <TextView
+        android:id="@+id/mDetailsActiveCasesText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/horizonalView2"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsActiveCases" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsActiveCasesText"
+        app:layout_constraintVertical_bias="0.863" />
+
+    <View
+        android:id="@+id/horizonalView2"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="312dp"
+        app:layout_constraintBottom_toBottomOf="@id/view5"
+        app:layout_constraintStart_toEndOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/mDetailsBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@color/colorBtn"
+        android:onClick="mDetailsBackBtn"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/view5" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="136dp"
+        android:text="@string/totaldeath"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalDeathsText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalDeaths" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalRecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/totalrecovered"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalDeathsText" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalRecoveredText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalRecovered" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalTests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="144dp"
+        android:text="@string/totaltests"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalRecoveredText" />
+
+    <TextView
+        android:id="@+id/mDetailsTotalTestsText"
+        android:layout_width="64dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/data0"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalTests" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
