@@ -1,11 +1,8 @@
 package com.example.appproject_coronatracker.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,13 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.models.Country;
-import com.example.appproject_coronatracker.models.CountryParcelable;
 
 import java.util.ArrayList;
 
 public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdapter.WordViewHolder> {
 
-    private ArrayList<CountryParcelable> mCountryArrayList;
+    private ArrayList<Country> mCountryArrayList;
     private OnItemListener mOnItemListener;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
@@ -46,7 +42,7 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         }
     }
 
-    public CoronaTrackerAdapter(ArrayList<CountryParcelable> countries, OnItemListener onItemListener) {
+    public CoronaTrackerAdapter(ArrayList<Country> countries, OnItemListener onItemListener) {
         this.mCountryArrayList = countries;
         this.mOnItemListener = onItemListener;
     }
@@ -80,7 +76,7 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
         void onItemClick(int position);
     }
 
-    public void updateData(ArrayList<CountryParcelable> newList) {
+    public void updateData(ArrayList<Country> newList) {
         mCountryArrayList = newList;
         notifyDataSetChanged();
     }

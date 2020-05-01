@@ -1,9 +1,12 @@
 package com.example.appproject_coronatracker.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Country {
+public class Country implements Parcelable {
 
     @SerializedName("updated")
     @Expose
@@ -71,6 +74,102 @@ public class Country {
         this.active = active;
         this.critical = critical;
         this.tests = tests;
+    }
+
+    private Country(Parcel in) {
+        if (in.readByte() == 0) {
+            updated = null;
+        } else {
+            updated = in.readDouble();
+        }
+        country = in.readString();
+        if (in.readByte() == 0) {
+            cases = null;
+        } else {
+            cases = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            todayCases = null;
+        } else {
+            todayCases = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            deaths = null;
+        } else {
+            deaths = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            todayDeaths = null;
+        } else {
+            todayDeaths = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            recovered = null;
+        } else {
+            recovered = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            active = null;
+        } else {
+            active = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            critical = null;
+        } else {
+            critical = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            casesPerOneMillion = null;
+        } else {
+            casesPerOneMillion = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            deathsPerOneMillion = null;
+        } else {
+            deathsPerOneMillion = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            tests = null;
+        } else {
+            tests = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            testsPerOneMillion = null;
+        } else {
+            testsPerOneMillion = in.readInt();
+        }
+        continent = in.readString();
+    }
+
+    public static final Creator<Country> CREATOR = new Creator<Country>() {
+        @Override
+        public Country createFromParcel(Parcel in) {
+            return new Country(in);
+        }
+
+        @Override
+        public Country[] newArray(int size) {
+            return new Country[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(getCountry());
+        dest.writeString(getCountryInfo().getFlag());
+        dest.writeInt(getCases());
+        dest.writeInt(getTodayCases());
+        dest.writeInt(getDeaths());
+        dest.writeInt(getRecovered());
+        dest.writeInt(getActive());
+        dest.writeInt(getCritical());
+        dest.writeInt(getTests());
+
     }
 
     public Double getUpdated() {
@@ -192,4 +291,6 @@ public class Country {
     public void setContinent(String continent) {
         this.continent = continent;
     }
+
+
 }
