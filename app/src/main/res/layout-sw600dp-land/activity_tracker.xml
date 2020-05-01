@@ -11,16 +11,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="586dp"
-        android:layout_height="701dp"
+        android:layout_width="585dp"
+        android:layout_height="652dp"
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132"
+        app:layout_constraintVertical_bias="0.362"
         tools:listitem="@layout/coronatracker_item" />
 
     <Button
@@ -37,7 +37,7 @@
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toEndOf="@+id/recyclerView"
         app:layout_constraintTop_toBottomOf="@+id/addBtn"
         app:layout_constraintVertical_bias="0.266" />
@@ -65,24 +65,12 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="60dp"
         android:ems="10"
-        android:hint="Search"
+        android:hint="@string/search"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toEndOf="@+id/recyclerView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <TextView
-            android:id="@+id/textView2"
-            android:layout_width="398dp"
-            android:layout_height="77dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/search_text"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

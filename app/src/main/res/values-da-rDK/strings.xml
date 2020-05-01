@@ -84,4 +84,6 @@
     <string name="otherdiseases">Andre sygdomme:</string>
     <string name="et_please_insert_notes">Skriv her </string>
     <string name="no_markers_registered_yet">Ingen markeringer gemt endnu</string>
+    <string name="user_s_notes">Brugerens notater</string>
+    <string name="search">Søg</string>
 </resources>

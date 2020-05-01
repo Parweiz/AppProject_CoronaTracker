@@ -1,5 +1,6 @@
 package com.example.appproject_coronatracker.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,14 +17,8 @@ import android.os.IBinder;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.SearchView;
-
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.adapter.CoronaTrackerAdapter;
 import com.example.appproject_coronatracker.models.Country;
@@ -35,7 +30,6 @@ import static com.example.appproject_coronatracker.service.CoronaTrackerService.
 
 public class TrackerActivity extends AppCompatActivity implements CoronaTrackerAdapter.OnItemListener {
 
-    private int wordClickedIndex;
     private ArrayList<Country> mCountryArrayList = new ArrayList<>();
     private CoronaTrackerAdapter mAdapter;
     public static final String TAG = "coronatrackerservice";
@@ -51,6 +45,10 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
 
+        if (savedInstanceState != null) {
+            mCountryArrayList = savedInstanceState.getParcelableArrayList(getString(R.string.key_orientationchange));
+        }
+
         setUpRecyclerView();
         boundServiceSetupFunction();
         searchFunc();
@@ -65,6 +63,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         IntentFilter filter = new IntentFilter();
         filter.addAction(CoronaTrackerService.BROADCAST_BACKGROUND_SERIVE_ARRAYLIST);
         LocalBroadcastManager.getInstance(this).registerReceiver(localBroadcastReceiver, filter);
+
     }
 
     @Override
@@ -136,6 +135,7 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
 
@@ -152,6 +152,8 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
                 coronaTrackerService = binder.getService();
                 mBound = true;
                 Log.d(TAG, "Boundservice connected - TrackerActivity");
+
+                coronaTrackerService.getAllCountries();
             }
 
             public void onServiceDisconnected(ComponentName className) {
@@ -166,13 +168,8 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Bundle bundle = intent.getBundleExtra("Bundle");
-            mCountryArrayList = (ArrayList<Country>) bundle.getSerializable(ARRAY_LIST);
-
-            Log.d(TAG, "onReceive: " + mCountryArrayList.get(0).getCountry());
-
+            mCountryArrayList = intent.getParcelableArrayListExtra(getString(R.string.key_broadcast_arraylist));
             mAdapter.updateData(mCountryArrayList);
-
         }
     };
 
@@ -181,7 +178,6 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     public void onItemClick(int position) {
         Intent intent = new Intent(this, DetailsActivity.class);
         Country clickedCountry = mCountryArrayList.get(position);
-        wordClickedIndex = position;
 
         intent.putExtra(getString(R.string.key_flag), clickedCountry.getCountryInfo().getFlag());
         intent.putExtra(getString(R.string.key_country), clickedCountry.getCountry());
@@ -194,5 +190,11 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
         intent.putExtra(getString(R.string.key_totaltests), clickedCountry.getTests());
 
         startActivity(intent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelableArrayList(getString(R.string.key_orientationchange), mCountryArrayList);
+        super.onSaveInstanceState(outState);
     }
 }

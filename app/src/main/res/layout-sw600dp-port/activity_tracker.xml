@@ -9,19 +9,33 @@
 
     >
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="388dp"
-        android:layout_height="502dp"
+        android:layout_width="750dp"
+        android:layout_height="628dp"
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/addBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
-        app:layout_constraintVertical_bias="0.384"
+        app:layout_constraintVertical_bias="0.235"
         tools:listitem="@layout/coronatracker_item" />
+
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="@string/search"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/backTrackerBtn"
@@ -29,13 +43,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="26dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
+        android:importantForAutofill="no"
         android:onClick="backBtn"
         android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:importantForAutofill="no"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -44,30 +58,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="26dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
         android:onClick="addDataBtn"
         android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
-        app:layout_constraintStart_toEndOf="@+id/backTrackerBtn" />
-
-
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/search"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
