@@ -21,8 +21,8 @@
     <string name="passwords_not_matching">Dine passwords matcher ikke. Prøv igen.</string>
     <string name="you_have_completed_signup">Tillykke, du er nu registreret</string>
     <string name="user_already_signed_in">Brugeren er allerede logget ind - går direkte til MenuActivity</string>
-    <string name="enter_password">Kode </string>
-    <string name="reenter_password">Gentag kode </string>
+    <string name="enter_password">Adgangskode</string>
+    <string name="reenter_password">"Gentag adgangskoden "</string>
     <string name="enter_email">Email </string>
     <string name="signup_btn">Registrer</string>
     <string name="question_already_user">Har du en bruger? Tryk her</string>
@@ -63,7 +63,7 @@
     <string name="country">Land</string>
     <string name="totalcases">Antal cases:</string>
     <string name="todayscount">Nye cases:</string>
-    <string name="data0">0.0</string>
+    <string name="data0">0</string>
     <string name="moreinfo">For mere information, \\nså tryk venligst på elementet</string>
     <string name="totalcritical">I kritiske tilstand:</string>
     <string name="totaldeath">Antal døde:</string>
@@ -77,8 +77,8 @@
     <string name="activecases">Aktive cases</string>
     <string name="notes">Noter:</string>
     <string name="status">Status:</string>
-    <string name="minebtn">MINE</string>
-    <string name="allbtn">ALLE</string>
+    <string name="minebtn">Mine</string>
+    <string name="allbtn">Alle</string>
     <string name="gender">Køn:</string>
     <string name="age">Alder:</string>
     <string name="otherdiseases">Andre sygdomme:</string>
@@ -86,4 +86,5 @@
     <string name="no_markers_registered_yet">Ingen markeringer gemt endnu</string>
     <string name="user_s_notes">Brugerens notater</string>
     <string name="search">Søg</string>
+    <string name="welcome">Velkommen!</string>
 </resources>

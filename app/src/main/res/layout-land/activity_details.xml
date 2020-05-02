@@ -101,6 +101,7 @@
         android:background="@color/colorBtn"
         android:onClick="mDetailsBackBtn"
         android:text="@string/back"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"

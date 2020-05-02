@@ -20,8 +20,8 @@
     <string name="passwords_not_matching">"Your passwords don't match. Try again"</string>
     <string name="you_have_completed_signup">"Congratulations, you are now signed up </string>
     <string name="user_already_signed_in">User is already signed in - going directly to MenuActivity</string>
-    <string name="enter_password">Code</string>
-    <string name="reenter_password">Reenter code</string>
+    <string name="enter_password">Password</string>
+    <string name="reenter_password">Reenter password</string>
     <string name="enter_email">Email </string>
     <string name="signup_btn">Signup</string>
     <string name="question_already_user">Already registered? Click here</string>
@@ -66,7 +66,7 @@
     <string name="totalrecovered">Total Recovered: </string>
     <string name="activecases">Active cases: </string>
     <string name="totaltests">Total tests: </string>
-    <string name="data0">0.0</string>
+    <string name="data0">0</string>
     <string name="moreinfo">For more information, \nplease press on the item</string>
     <string name="key_flag" translatable="false">flag</string>
     <string name="key_country" translatable="false">country</string>
@@ -86,8 +86,8 @@
     <string name="advice5">Keep your distance and ask others to be considerate</string>
     <string name="notes">Notes:</string>
     <string name="status">Status:</string>
-    <string name="minebtn">MINE</string>
-    <string name="allbtn">ALL</string>
+    <string name="minebtn">Mine</string>
+    <string name="allbtn">All</string>
     <string name="gender">Gender:</string>
     <string name="age">Age:</string>
     <string name="otherdiseases">Other diseases:</string>
@@ -95,4 +95,5 @@
     <string name="no_markers_registered_yet">No markers saved yet</string>
     <string name="user_s_notes">User\'s notes</string>
     <string name="search">Search</string>
+    <string name="welcome">Welcome!</string>
 </resources>

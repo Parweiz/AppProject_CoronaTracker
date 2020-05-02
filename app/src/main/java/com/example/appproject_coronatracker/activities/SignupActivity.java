@@ -68,17 +68,17 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        if(savedInstanceState != null ){
-            etEmail.setText(savedInstanceState.getString(EMAIL_STRING));
-            etPassword.setText(savedInstanceState.getString(PASSWORD_STRING));
-            etRepassword.setText(savedInstanceState.getString(REPASSWORD_STRING));
-        }
-
         etEmail = findViewById(R.id.et_email_signup);
         etPassword = findViewById(R.id.et_password_signup);
         etRepassword = findViewById(R.id.et_repassword_signup);
         btnSignUp = findViewById(R.id.btn_signup_signup);
         tvAlreadyUser = findViewById(R.id.tv_alreadyuser_signup);
+
+        if (savedInstanceState != null) {
+            etEmail.setText(savedInstanceState.getString(EMAIL_STRING));
+            etPassword.setText(savedInstanceState.getString(PASSWORD_STRING));
+            etRepassword.setText(savedInstanceState.getString(REPASSWORD_STRING));
+        }
 
         mAuth = FirebaseAuth.getInstance();
 

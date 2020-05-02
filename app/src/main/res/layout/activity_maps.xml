@@ -155,6 +155,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
         android:text="@string/back"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view9" />
@@ -168,7 +169,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
         android:layout_marginBottom="16dp"
-
+        android:textAllCaps="false"
         android:background="@color/colorBtn"
         android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -185,6 +186,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
+        android:textAllCaps="false"
         android:text="@string/minebtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_add_maps"
@@ -200,6 +202,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
+        android:textAllCaps="false"
         android:text="@string/allbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
