@@ -7,11 +7,15 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +30,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appproject_coronatracker.R;
 import com.example.appproject_coronatracker.activities.LoginActivity;
+import com.example.appproject_coronatracker.activities.MapsActivity;
 import com.example.appproject_coronatracker.models.Country;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,6 +45,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -66,9 +80,12 @@ public class CoronaTrackerService extends Service {
     private Random random = new Random();
     private int index, tempResult;
 
+    private BitmapDescriptor markerColor;
+    GoogleMap gMap;
+
+    // Cloud Firestore
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private DocumentReference notificationsRef = firestore.document("notifications/z9cotEfKEd6epuh71k2n");
-
 
 
     public class LocalBinder extends Binder {
@@ -83,7 +100,7 @@ public class CoronaTrackerService extends Service {
         mContext = getApplicationContext();
 
        // addDataForNotifcation();
-        getDatafromFirestore();
+        getAllNotificatioAdvicesFromFirestore();
     }
 
     @Override
@@ -109,6 +126,7 @@ public class CoronaTrackerService extends Service {
                 PendingIntent pendingIntent = PendingIntent.getActivity(
                         this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+                // Appen kommer altid med notification om at vaske ens hænder eller sprit ens hænder, når man starter appen
                 Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_announcement_black_24dp)
                         .setContentTitle(getString(R.string.notificationtitle))
@@ -148,10 +166,10 @@ public class CoronaTrackerService extends Service {
         super.onDestroy();
     }
 
-    public void addCountry(String word) {
+    public void addCountry(String country) {
 
         String server_url = "https://corona.lmao.ninja/v2/countries/";
-        volleyRequest(server_url + word);
+        volleyRequest(server_url + country);
     }
 
     public void volleyRequest(String url) {
@@ -192,12 +210,12 @@ public class CoronaTrackerService extends Service {
         localBroadcastSender(mCountryArrayList);
     }
 
+
     public void localBroadcastSender(ArrayList<Country> countries) {
 
         Log.d(TAG, "Using local broadcast to send arraylist ");
 
         Intent intent = new Intent();
-        Bundle bundle = new Bundle();
 
         intent.setAction(BROADCAST_BACKGROUND_SERIVE_ARRAYLIST);
         intent.putParcelableArrayListExtra(getString(R.string.key_broadcast_arraylist), countries);
@@ -232,7 +250,7 @@ public class CoronaTrackerService extends Service {
         });
     }
 
-    private void getDatafromFirestore() {
+    private void getAllNotificatioAdvicesFromFirestore() {
 
         notificationsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
