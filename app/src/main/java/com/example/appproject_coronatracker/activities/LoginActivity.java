@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // Widgets
     EditText etEmail, etPassword;
-    Button btnLogin;
+    Button btnLogin, btnExit;
     TextView tvNotUserYet;
 
     @Override
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etEmail = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
         btnLogin = findViewById(R.id.btn_login_login);
+        btnExit = findViewById(R.id.btn_exit_login);
         tvNotUserYet = findViewById(R.id.tv_notauseryet_login);
 
         if(savedInstanceState != null ){
@@ -80,6 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btnLogin.setOnClickListener(this);
         tvNotUserYet.setOnClickListener(this);
+        btnExit.setOnClickListener(this);
     }
 
     @Override
@@ -94,6 +96,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view){
         if(view == tvNotUserYet)switchToSignupActivity();
         if(view == btnLogin)loginButtonPressed();
+        if (view == btnExit) {
+            setResult(RESULT_CANCELED);
+            finish();
+        }
     }
 
     private void loginButtonPressed() {

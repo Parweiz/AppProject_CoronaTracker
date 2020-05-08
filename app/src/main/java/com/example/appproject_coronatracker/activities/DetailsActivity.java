@@ -43,13 +43,13 @@ public class DetailsActivity extends AppCompatActivity {
         Glide.with(imageView.getContext()).load(picture).into(imageView);
         txtCountry.setText(intent.getStringExtra(getString(R.string.key_country)));
 
-        txtTotalCases.setText("" + intent.getIntExtra(getString(R.string.key_totalcases), 0));
-        txtTodaysCount.setText("" + intent.getIntExtra(getString(R.string.key_todayscases), 0));
-        txtTotalDeaths.setText("" + intent.getIntExtra(getString(R.string.key_totaldeaths), 0));
-        txtTotalCritical.setText("" + intent.getIntExtra(getString(R.string.key_totalcritical), 0));
-        txtTotalRecovered.setText("" + intent.getIntExtra(getString(R.string.key_totalrecovered), 0));
-        txtActiveCases.setText("" + intent.getIntExtra(getString(R.string.activecases), 0));
-        txtTotalTests.setText("" + intent.getIntExtra(getString(R.string.key_totaltests), 0));
+        txtTotalCases.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_totalcases), 0)));
+        txtTodaysCount.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_todayscases), 0)));
+        txtTotalDeaths.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_totaldeaths), 0)));
+        txtTotalCritical.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_totalcritical), 0)));
+        txtTotalRecovered.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_totalrecovered), 0)));
+        txtActiveCases.setText(String.valueOf(intent.getIntExtra(getString(R.string.activecases), 0)));
+        txtTotalTests.setText(String.valueOf(intent.getIntExtra(getString(R.string.key_totaltests), 0)));
     }
 
     public void mDetailsBackBtn(View v) {

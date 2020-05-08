@@ -10,12 +10,12 @@
 
     <ImageView
         android:id="@+id/mDetailsFlag"
-        android:layout_width="413dp"
-        android:layout_height="160dp"
+        android:layout_width="363dp"
+        android:layout_height="158dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/flag"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -70,10 +70,10 @@
         android:layout_width="65dp"
         android:layout_height="27dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="21dp"
         android:text="@string/data0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toEndOf="@+id/mDetailsTotalCases"
         app:layout_constraintTop_toBottomOf="@+id/viewBetweenTxtCountryAndTotalCases" />
 
@@ -91,8 +91,8 @@
         android:id="@+id/mDetailsTodaysCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="92dp"
         android:text="@string/todayscount"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -102,13 +102,13 @@
 
     <TextView
         android:id="@+id/mDetailsTodaysCountText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
         android:text="@string/data0"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/horizonalView"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsTodaysCount" />
 
@@ -127,34 +127,34 @@
         android:id="@+id/viewAboveBtn"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalCriticalText" />
+        app:layout_constraintTop_toBottomOf="@+id/mDetailsActiveCasesText" />
 
     <TextView
         android:id="@+id/mDetailsTotalCritical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/totalcritical"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/horizonalView"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsTodaysCountText" />
 
     <TextView
         android:id="@+id/mDetailsTotalCriticalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
         android:text="@string/data0"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/horizonalView"
-        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalCritical" />
 
@@ -162,9 +162,9 @@
         android:id="@+id/mDetailsTotalDeaths"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/totaldeath"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.278"
@@ -173,13 +173,13 @@
 
     <TextView
         android:id="@+id/mDetailsTotalDeathsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
         android:text="@string/data0"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toEndOf="@+id/horizonalView"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalDeaths" />
 
@@ -187,7 +187,7 @@
         android:id="@+id/mDetailsTotalRecovered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/totalrecovered"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -198,9 +198,9 @@
 
     <TextView
         android:id="@+id/mDetailsTotalRecoveredText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
         android:text="@string/data0"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -216,12 +216,14 @@
         android:background="@color/colorBtn"
         android:onClick="mDetailsBackBtn"
         android:text="@string/back"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAboveBtn"
 
         />
+
 
     <TextView
         android:id="@+id/mDetailsActiveCases"
@@ -232,27 +234,26 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/horizonalView"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsTotalCriticalText" />
 
     <TextView
         android:id="@+id/mDetailsActiveCasesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
         android:text="@string/data0"
         app:layout_constraintEnd_toStartOf="@+id/horizonalView"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mDetailsActiveCases" />
-
 
     <TextView
         android:id="@+id/mDetailsTotalTests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/totaltests"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -263,8 +264,8 @@
 
     <TextView
         android:id="@+id/mDetailsTotalTestsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="@string/data0"
         app:layout_constraintEnd_toEndOf="parent"

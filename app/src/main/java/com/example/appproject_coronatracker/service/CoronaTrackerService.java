@@ -7,7 +7,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,6 +64,7 @@ public class CoronaTrackerService extends Service {
     private ExecutorService execService;
     private RequestQueue queue;
     private Random random = new Random();
+    private int index, tempResult;
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private DocumentReference notificationsRef = firestore.document("notifications/z9cotEfKEd6epuh71k2n");
@@ -124,9 +124,10 @@ public class CoronaTrackerService extends Service {
 
 
             }
-            // Sleep time for 2 mins
-            recursiveSleepWork(100000000L);
 
+            // Sleep time for 3 mins - Demo purposes
+            recursiveSleepWork(180000L);
+            
         } else {
             Log.d(TAG, "Background service already started!");
         }
@@ -183,26 +184,13 @@ public class CoronaTrackerService extends Service {
         if (country != null) {
             mCountryArrayList.add(country);
 
-            new CreateCountriesAsyncTask().execute(country);
+            localBroadcastSender(mCountryArrayList);
         }
 
     }
 
-    public class CreateCountriesAsyncTask extends AsyncTask<Country, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Country... countries) {
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            localBroadcastSender(mCountryArrayList);
-
-        }
+    public void getAllCountries() {
+        localBroadcastSender(mCountryArrayList);
     }
 
     public void localBroadcastSender(ArrayList<Country> countries) {
@@ -213,8 +201,7 @@ public class CoronaTrackerService extends Service {
         Bundle bundle = new Bundle();
 
         intent.setAction(BROADCAST_BACKGROUND_SERIVE_ARRAYLIST);
-        bundle.putSerializable(ARRAY_LIST, countries);
-        intent.putExtra("Bundle", bundle);
+        intent.putParcelableArrayListExtra(getString(R.string.key_broadcast_arraylist), countries);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
 
@@ -233,7 +220,7 @@ public class CoronaTrackerService extends Service {
                     if (mStringArrayList.size() > 0) {
                        getRandomAdvice(mStringArrayList);
                     }
-                    Log.d(TAG, "Task completed - Will now sleep for 2 mins");
+                    Log.d(TAG, "Task completed - Will now sleep for 3 mins");
                     Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -274,7 +261,7 @@ public class CoronaTrackerService extends Service {
         });
     }
 
-
+    // Denne her funktion har kun været i brug til at indsætte data i Cloud Firestore ift. god skik
     private void addDataForNotifcation() {
 
         Map<String, Object> data = new HashMap<>();
@@ -303,7 +290,13 @@ public class CoronaTrackerService extends Service {
 
     private void getRandomAdvice(List<String> list) {
 
-        int index = random.nextInt(list.size());
+        index = random.nextInt(list.size());
+        Log.d(TAG, "getRandomAdvice: " + index);
+        if (index == tempResult) {
+            getRandomAdvice(list);
+        }
+        tempResult = index;
+
         Log.d(TAG, "index: " + index + ", advice: " + list.get(index));
 
         Intent notificationIntent = new Intent(this, LoginActivity.class);
@@ -313,7 +306,6 @@ public class CoronaTrackerService extends Service {
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_announcement_black_24dp)
                 .setContentTitle(getString(R.string.notificationtitle))
-                //.setContentText(list.get(index))
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(list.get(index)))
                 .setAutoCancel(true)

@@ -4,44 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignupActivity"
     android:background="@color/colorBackground"
+    tools:context=".activities.SignupActivity"
 
     >
 
     <EditText
         android:id="@+id/et_email_signup"
-        android:layout_width="242dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="170dp"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_repassword_signup"
-        android:layout_width="245dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="46dp"
         android:hint="@string/reenter_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
 
     <EditText
         android:id="@+id/et_password_signup"
-        android:layout_width="243dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="255dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="46dp"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email_signup" />
 
@@ -49,28 +46,25 @@
         android:id="@+id/btn_signup_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="46dp"
+        android:background="@color/colorBtn"
         android:text="@string/signup_btn"
         android:textAllCaps="false"
-        android:background="@color/colorBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_repassword_signup" />
 
     <TextView
         android:id="@+id/tv_alreadyuser_signup"
-        android:layout_width="244dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="236dp"
+        android:layout_height="116dp"
         android:gravity="center"
         android:text="@string/question_already_user"
         android:textColor="#080808"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signup_signup"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.287" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

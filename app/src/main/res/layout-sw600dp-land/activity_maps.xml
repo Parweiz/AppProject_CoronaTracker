@@ -9,14 +9,14 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapview_maps"
-        android:layout_width="396dp"
-        android:layout_height="264dp"
+        android:layout_width="510dp"
+        android:layout_height="547dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_mine_maps"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/view8"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <View
         android:id="@+id/view7"
@@ -70,7 +70,7 @@
         android:id="@+id/btn_mine_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="240dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
         android:textAllCaps="false"
@@ -84,7 +84,7 @@
         android:id="@+id/btn_all_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="68dp"
         android:layout_marginBottom="16dp"
         android:background="@color/colorBtn"
         android:textAllCaps="false"
@@ -100,11 +100,12 @@
         android:id="@+id/tv_gender_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
         android:text="@string/gender"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/spin_gender_maps"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -112,10 +113,10 @@
         android:id="@+id/spin_gender_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toStartOf="@+id/view8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,8 +124,10 @@
         android:id="@+id/tv_age_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="42dp"
         android:text="@string/age"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/spin_age_maps"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,10 +137,10 @@
         android:id="@+id/spin_age_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toStartOf="@+id/view8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_gender_maps" />
 
@@ -145,10 +148,12 @@
         android:id="@+id/tv_otherdiseases_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="42dp"
         android:text="@string/otherdiseases"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/spin_otherdiseases_maps"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_age_maps" />
 
@@ -156,10 +161,10 @@
         android:id="@+id/spin_otherdiseases_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toStartOf="@+id/view8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_age_maps" />
 
@@ -167,8 +172,10 @@
         android:id="@+id/tv_status_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="42dp"
         android:text="@string/status"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/spin_status_maps"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
@@ -178,10 +185,10 @@
         android:id="@+id/spin_status_maps"
         android:layout_width="259dp"
         android:layout_height="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toStartOf="@+id/view8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_otherdiseases_maps" />
 
@@ -189,23 +196,26 @@
         android:id="@+id/tv_notes_maps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="42dp"
         android:text="@string/notes"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_status_maps" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="263dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="276dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/user_s_notes"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/view8"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spin_status_maps" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
