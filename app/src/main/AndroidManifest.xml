@@ -19,7 +19,7 @@
             android:label="Sign Up" />
         <activity
             android:name=".activities.LoginActivity"
-            android:label="Login">
+            android:label="Corona Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
