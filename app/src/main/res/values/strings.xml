@@ -58,6 +58,7 @@
         <item>Unknown</item>
     </string-array>
     <string name="flag">Flag</string>
+    <string name="mDelete" translatable="false">mDelete</string>
     <string name="country">Country</string>
     <string name="totalcases">Total Cases: </string>
     <string name="todayscount">New Cases:</string>
