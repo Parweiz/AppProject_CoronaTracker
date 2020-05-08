@@ -20,26 +20,49 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
     private ArrayList<Country> mCountryArrayList;
     private OnItemListener mOnItemListener;
 
-    public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+    public class WordViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
+        ImageView imageView, mDeleteImage;
         TextView txtCountry;
         OnItemListener onItemListener;
 
-        public WordViewHolder(@NonNull View itemView, OnItemListener onItemListener) {
+        public WordViewHolder(@NonNull View itemView, final OnItemListener onItemListener) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.flag);
             txtCountry = itemView.findViewById(R.id.txtCountryName);
+            mDeleteImage = itemView.findViewById(R.id.mDeleteImage);
             this.onItemListener = onItemListener;
 
-            itemView.setOnClickListener(this);
+            // itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            mDeleteImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemListener.onDeleteClick(position);
+                        }
+                    }
+                }
+            });
+
+
         }
 
-        @Override
-        public void onClick(View v) {
-            onItemListener.onItemClick(getAdapterPosition());
-        }
+
     }
 
     public CoronaTrackerAdapter(ArrayList<Country> countries, OnItemListener onItemListener) {
@@ -74,6 +97,8 @@ public class CoronaTrackerAdapter extends RecyclerView.Adapter<CoronaTrackerAdap
 
     public interface OnItemListener {
         void onItemClick(int position);
+
+        void onDeleteClick(int position);
     }
 
     public void updateData(ArrayList<Country> newList) {

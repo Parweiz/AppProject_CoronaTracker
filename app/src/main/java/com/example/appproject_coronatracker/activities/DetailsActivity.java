@@ -15,6 +15,7 @@ import com.example.appproject_coronatracker.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    // widget
     private ImageView imageView;
     private TextView txtCountry, txtTotalCases, txtTodaysCount, txtTotalDeaths, txtTotalCritical, txtTotalRecovered, txtActiveCases, txtTotalTests;
 

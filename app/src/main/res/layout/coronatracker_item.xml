@@ -12,7 +12,7 @@
         android:layout_width="123dp"
         android:layout_height="128dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="4dp"
         android:contentDescription="@string/flag"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:layout_toEndOf="@+id/flag"
         android:text="@string/country"
@@ -36,73 +36,23 @@
         android:id="@+id/txtMoreInfo"
         android:layout_width="190dp"
         android:layout_height="40dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="28dp"
         android:text="@string/moreinfo"
         app:layout_constraintStart_toEndOf="@+id/flag"
         app:layout_constraintTop_toBottomOf="@+id/txtCountryName" />
 
 
-    <!--<TextView
-        android:id="@+id/txtCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/country"
-        app:layout_constraintStart_toEndOf="@+id/flag"
+    <ImageView
+        android:id="@+id/mDeleteImage"
+        android:layout_width="75dp"
+        android:layout_height="86dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtTotalCases"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/totalcases"
-        app:layout_constraintStart_toEndOf="@+id/flag"
-        app:layout_constraintTop_toBottomOf="@+id/txtCountry" />
-
-    <TextView
-        android:id="@+id/txtTodaysCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/todayscount"
-        app:layout_constraintStart_toEndOf="@+id/flag"
-        app:layout_constraintTop_toBottomOf="@+id/txtTotalCases" />
-
-    <TextView
-        android:id="@+id/txtTotalDeath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="@string/totaldeath"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtTodaysCount" />
-
-    <TextView
-        android:id="@+id/txtTotalCritical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/totalcritical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/flag"
-        app:layout_constraintTop_toBottomOf="@+id/txtTodaysCount" />
-
-    <TextView
-        android:id="@+id/txtTotalRecovered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/totalrecovered"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintStart_toEndOf="@+id/txtTotalCritical"
-        app:layout_constraintTop_toBottomOf="@+id/txtTotalDeath"
-        app:layout_constraintVertical_bias="0.517" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,18 +26,20 @@ import com.example.appproject_coronatracker.service.CoronaTrackerService;
 
 import java.util.ArrayList;
 
-import static com.example.appproject_coronatracker.service.CoronaTrackerService.ARRAY_LIST;
-
 public class TrackerActivity extends AppCompatActivity implements CoronaTrackerAdapter.OnItemListener {
 
+    // recyclerview
     private ArrayList<Country> mCountryArrayList = new ArrayList<>();
     private CoronaTrackerAdapter mAdapter;
-    public static final String TAG = "coronatrackerservice";
     private RecyclerView mRecyclerView;
+
+    // service
+    public static final String TAG = "coronatrackerservice";
     CoronaTrackerService coronaTrackerService = new CoronaTrackerService();
     private ServiceConnection boundService;
     private boolean mBound = false;
 
+    // widget
     private EditText editText;
 
     @Override
@@ -109,13 +111,13 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     }
 
     private void bindingToTheService() {
-        Log.d(TAG, "Binding to the service from DetailsActivity ");
+        Log.d(TAG, "Binding to the service from TrackerActivity ");
         Intent intent = new Intent(this, CoronaTrackerService.class);
         bindService(intent, boundService, Context.BIND_AUTO_CREATE);
     }
 
     private void unbindingFromTheService() {
-        Log.d(TAG, "Unbinding to the service from DetailsActivity ");
+        Log.d(TAG, "Unbinding to the service from TrackerActivity ");
         if (mBound) {
             unbindService(boundService);
             mBound = false;
@@ -193,8 +195,19 @@ public class TrackerActivity extends AppCompatActivity implements CoronaTrackerA
     }
 
     @Override
+    public void onDeleteClick(int position) {
+        mCountryArrayList.remove(position);
+        // mAdapter.notifyItemRemoved(position);
+        mAdapter.notifyDataSetChanged();
+
+        Log.d(TAG, "ArraySize now: " + mCountryArrayList.size());
+    }
+
+    @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putParcelableArrayList(getString(R.string.key_orientationchange), mCountryArrayList);
         super.onSaveInstanceState(outState);
     }
+
+
 }
