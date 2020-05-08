@@ -142,9 +142,10 @@ public class CoronaTrackerService extends Service {
 
 
             }
+
             // Sleep time for 3 mins - Demo purposes
             recursiveSleepWork(180000L);
-
+            
         } else {
             Log.d(TAG, "Background service already started!");
         }
