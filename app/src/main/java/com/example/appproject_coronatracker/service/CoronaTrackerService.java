@@ -65,7 +65,7 @@ public class CoronaTrackerService extends Service {
     private final IBinder binder = new LocalBinder();
     public static final String BROADCAST_BACKGROUND_SERIVE_ARRAYLIST = "com.example.appproject_coronatracker.BROADCAST_BACKGROUND_SERVICE_ARRAYLIST";
     public static final String ARRAY_LIST = "arraylist";
-    public static final String TAG = "wordlearnerservice";
+    public static final String TAG = "coronatrackerservice";
     public static final String CHANNEL_ID = "approject_coronatracker_channelid";
     public static final int NOTIFICATION_ID = 1;
     private CharSequence CHANNEL_NAME = "WordLearnerService Channel";
